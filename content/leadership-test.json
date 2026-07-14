@@ -3,10 +3,18 @@
   "program": "BIMstream SCORE",
   "programFullName": "Situational Competency & Organizational Readiness Evaluation",
   "title": "SCORE — Assistant Manager / Manager Assessment",
-  "durationMinutes": 30,
+  "durationMinutes": 45,
   "audience": "Assistant Managers and Managers overseeing BIM coordination teams",
-  "description": "Purely HR/behavioral instrument, 30 questions at ~60 seconds each. Technical/software skill is assessed separately (technical test + Personal Interview), so this test carries no technical items at all. Weighted for a managerial role: Leadership gets the most questions, Communication and Team Play next, then Problem-Solving; Dispute Resolution and Organizational Mindset carry smaller dedicated quotas (though still higher than at the modeler level, reflecting real managerial exposure), and Ethics is a minimal but always-active dimension — ethics-concern flags can surface on any question, not just the 2 dedicated ones.",
-  "topicWeights": { "LD": 7, "CM": 6, "TP": 5, "PS": 5, "DR": 3, "OM": 2, "ET": 2 },
+  "description": "Purely HR/behavioral instrument, 30 questions at ~90 seconds each. Technical/software skill is assessed separately (technical test + Personal Interview), so this test carries no technical items at all. Weighted for a managerial role: Leadership gets the most questions, Communication and Team Play next, then Problem-Solving; Dispute Resolution and Organizational Mindset carry smaller dedicated quotas (though still higher than at the modeler level, reflecting real managerial exposure), and Ethics is a minimal but always-active dimension — ethics-concern flags can surface on any question, not just the 2 dedicated ones.",
+  "topicWeights": {
+    "LD": 7,
+    "CM": 6,
+    "TP": 5,
+    "PS": 5,
+    "DR": 3,
+    "OM": 2,
+    "ET": 2
+  },
   "sections": [
     {
       "type": "situational_judgment",
@@ -17,10 +25,38 @@
           "topic": "LD",
           "prompt": "A junior staff member makes a significant error that reaches the client before being caught. As team lead, what's your response?",
           "options": [
-            { "text": "Quietly fix it and never mention it to the client to avoid embarrassment.", "trait_deltas": { "ET": -2, "CM": -1 }, "flag": "ethics_concern" },
-            { "text": "Blame the junior staff member to the client to protect yourself.", "trait_deltas": { "CM": -2, "LD": -2, "DR": -1, "ET": -1 } },
-            { "text": "Own it with the client, communicate the correction and prevention plan, and address the root cause privately and constructively with the staff member.", "trait_deltas": { "LD": 2, "CM": 2, "ET": 2 } },
-            { "text": "Terminate the junior staff member immediately.", "trait_deltas": { "LD": -2, "ET": -1 } }
+            {
+              "text": "Correct the mistake quietly yourself and hold off telling the client, since raising it might create embarrassment that doesn't seem worth the risk.",
+              "trait_deltas": {
+                "ET": -2,
+                "CM": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "Explain to the client that the junior staff member was responsible, keeping the focus off your own role in overseeing the work.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -2,
+                "DR": -1,
+                "ET": -1
+              }
+            },
+            {
+              "text": "Own the error with the client, share the correction and prevention plan, then address the root cause privately and constructively with the person involved.",
+              "trait_deltas": {
+                "LD": 2,
+                "CM": 2,
+                "ET": 2
+              }
+            },
+            {
+              "text": "Decide the mistake is serious enough that the junior staff member should be let go from the team without further discussion.",
+              "trait_deltas": {
+                "LD": -2,
+                "ET": -1
+              }
+            }
           ]
         },
         {
@@ -28,10 +64,35 @@
           "topic": "LD",
           "prompt": "A major clash is discovered right before a permit submission and your team is panicking. What's your leadership approach?",
           "options": [
-            { "text": "Take over every task yourself to make sure it's done right.", "trait_deltas": { "LD": -1 } },
-            { "text": "Stay calm, quickly triage the issue, delegate clear ownership of specific parts, and set a tight but realistic timeline with check-ins.", "trait_deltas": { "LD": 2, "PS": 2, "CM": 2 } },
-            { "text": "Let the team figure it out without your involvement, to avoid micromanaging.", "trait_deltas": { "LD": -2, "PS": -1 } },
-            { "text": "Focus on identifying who's at fault before solving the technical problem.", "trait_deltas": { "LD": -2, "DR": -2, "CM": -1 } }
+            {
+              "text": "Step in and take over every task yourself, feeling that's the only way to be confident everything gets handled correctly under pressure.",
+              "trait_deltas": {
+                "LD": -1
+              }
+            },
+            {
+              "text": "Stay calm, quickly triage the issue, delegate clear ownership of specific parts, and set a tight but realistic timeline with regular check-ins.",
+              "trait_deltas": {
+                "LD": 2,
+                "PS": 2,
+                "CM": 2
+              }
+            },
+            {
+              "text": "Step back and let the team work through it on their own, mainly to avoid coming across as micromanaging during a stressful moment.",
+              "trait_deltas": {
+                "LD": -2,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Before diving into the fix, spend some time figuring out who's responsible for the clash so accountability is clear going forward for everyone.",
+              "trait_deltas": {
+                "LD": -2,
+                "DR": -2,
+                "CM": -1
+              }
+            }
           ]
         },
         {
@@ -39,10 +100,36 @@
           "topic": "LD",
           "prompt": "A talented team member consistently disrespects deadlines but produces excellent technical work. How do you manage this?",
           "options": [
-            { "text": "Overlook the deadline issue entirely because the work quality is high.", "trait_deltas": { "LD": -1, "PS": -1 } },
-            { "text": "Address the pattern directly and specifically, set clear expectations and consequences, while acknowledging their strength.", "trait_deltas": { "LD": 2, "CM": 2, "PS": 1 } },
-            { "text": "Criticize them publicly in front of the team.", "trait_deltas": { "CM": -2, "LD": -1, "DR": -1 } },
-            { "text": "Quietly reassign their tasks to others without discussing it with them.", "trait_deltas": { "CM": -2, "LD": -1 } }
+            {
+              "text": "Let the missed deadlines slide since the technical work is strong enough that it doesn't seem worth risking friction over timing.",
+              "trait_deltas": {
+                "LD": -1,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Address the deadline pattern directly and specifically, set clear expectations and consequences, while still acknowledging their genuine technical strength.",
+              "trait_deltas": {
+                "LD": 2,
+                "CM": 2,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Call out the repeated lateness in front of the whole team so everyone understands deadlines are taken seriously here.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1,
+                "DR": -1
+              }
+            },
+            {
+              "text": "Quietly shift their tasks over to other people instead of raising the deadline pattern directly with them in conversation.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -50,10 +137,36 @@
           "topic": "LD",
           "prompt": "A new Assistant Manager under you is eager but making decisions above their authority level, causing confusion on the team. How do you handle it?",
           "options": [
-            { "text": "Publicly undermine their decisions in front of the team.", "trait_deltas": { "LD": -2, "CM": -1, "DR": -1 } },
-            { "text": "Have a direct, supportive conversation clarifying decision boundaries, mentor them on judgment, and reinforce it consistently.", "trait_deltas": { "LD": 2, "CM": 2, "PS": 1 } },
-            { "text": "Say nothing and quietly override their decisions when you notice them.", "trait_deltas": { "LD": -1, "CM": -2 } },
-            { "text": "Remove their decision-making authority entirely without explanation.", "trait_deltas": { "LD": -1, "CM": -1 } }
+            {
+              "text": "Correct their decisions openly in front of the team whenever they overstep, so everyone sees where the real authority sits.",
+              "trait_deltas": {
+                "LD": -2,
+                "CM": -1,
+                "DR": -1
+              }
+            },
+            {
+              "text": "Have a direct, supportive conversation clarifying decision boundaries, mentor them on judgment, and reinforce those boundaries consistently over time.",
+              "trait_deltas": {
+                "LD": 2,
+                "CM": 2,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Say nothing directly to them, but quietly override the decisions yourself whenever you happen to notice them stepping too far.",
+              "trait_deltas": {
+                "LD": -1,
+                "CM": -2
+              }
+            },
+            {
+              "text": "Pull back their decision-making authority without much explanation, figuring the situation will sort itself out over time.",
+              "trait_deltas": {
+                "LD": -1,
+                "CM": -1
+              }
+            }
           ]
         },
         {
@@ -61,10 +174,36 @@
           "topic": "LD",
           "prompt": "Productivity data (billed hours vs. deliverables) shows one team member underperforming for several months. What's your approach as manager?",
           "options": [
-            { "text": "Reduce that person's billed hours retroactively without discussing it with them or the client.", "trait_deltas": { "ET": -2, "CM": -1 }, "flag": "ethics_concern" },
-            { "text": "Have a private, evidence-based performance conversation, identify root causes, set a clear improvement plan with support, and follow up.", "trait_deltas": { "LD": 2, "CM": 2, "PS": 1 } },
-            { "text": "Let it continue to avoid a difficult conversation.", "trait_deltas": { "LD": -2, "PS": -1 } },
-            { "text": "Reassign all their work to others without ever discussing performance with them directly.", "trait_deltas": { "LD": -1, "CM": -1 } }
+            {
+              "text": "Quietly adjust that person's billed hours after the fact, reasoning it's simpler than raising the performance issue with them or the client.",
+              "trait_deltas": {
+                "ET": -2,
+                "CM": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "Have a private, evidence-based performance conversation, identify root causes, set a clear improvement plan with support, then follow up.",
+              "trait_deltas": {
+                "LD": 2,
+                "CM": 2,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Let the underperformance continue for now, since raising it feels like it would create an uncomfortable conversation you'd rather avoid.",
+              "trait_deltas": {
+                "LD": -2,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Quietly shift their work over to others rather than having a direct conversation with them about the performance gap.",
+              "trait_deltas": {
+                "LD": -1,
+                "CM": -1
+              }
+            }
           ]
         },
         {
@@ -72,10 +211,34 @@
           "topic": "LD",
           "prompt": "You're promoted to manage former peers. One of them resents reporting to you now. What do you do?",
           "options": [
-            { "text": "Avoid giving them any direction to keep the peace.", "trait_deltas": { "LD": -2 } },
-            { "text": "Have an honest, direct conversation acknowledging the shift, clarify expectations, and earn credibility through fair, consistent leadership.", "trait_deltas": { "LD": 2, "CM": 2, "TP": 1 } },
-            { "text": "Assert your authority forcefully to establish dominance early.", "trait_deltas": { "LD": -1, "CM": -1, "DR": -1 } },
-            { "text": "Report their attitude to your own manager immediately without addressing it yourself.", "trait_deltas": { "LD": -1 } }
+            {
+              "text": "Hold back from giving them much direction for now, hoping the resentment fades naturally if you just keep the peace.",
+              "trait_deltas": {
+                "LD": -2
+              }
+            },
+            {
+              "text": "Have an honest, direct conversation acknowledging the shift, clarify expectations, and earn credibility through fair, consistent leadership over time.",
+              "trait_deltas": {
+                "LD": 2,
+                "CM": 2,
+                "TP": 1
+              }
+            },
+            {
+              "text": "Assert your new authority firmly and early, making clear that reporting lines have changed regardless of how they feel about it.",
+              "trait_deltas": {
+                "LD": -1,
+                "CM": -1,
+                "DR": -1
+              }
+            },
+            {
+              "text": "Mention their attitude to your own manager rather than addressing it with them directly yourself in the moment.",
+              "trait_deltas": {
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -83,10 +246,33 @@
           "topic": "LD",
           "prompt": "A high-priority client project needs a lead assigned from your team, and two capable people want the role. How do you decide?",
           "options": [
-            { "text": "Pick whoever asks most persistently.", "trait_deltas": { "LD": -1 } },
-            { "text": "Assess based on project fit, availability, and development opportunity, communicate the reasoning transparently to both, and offer the other a clear next opportunity.", "trait_deltas": { "LD": 2, "CM": 2, "ET": 1 } },
-            { "text": "Avoid deciding and let them sort it out between themselves.", "trait_deltas": { "LD": -1 } },
-            { "text": "Choose based on personal preference without explaining the reasoning.", "trait_deltas": { "LD": -1, "CM": -1 } }
+            {
+              "text": "Give the role to whoever has pushed for it most persistently, since that seems like the clearest signal of interest.",
+              "trait_deltas": {
+                "LD": -1
+              }
+            },
+            {
+              "text": "Assess based on project fit, availability, and development opportunity, explain the reasoning transparently to both, and offer the other a near-term opportunity.",
+              "trait_deltas": {
+                "LD": 2,
+                "CM": 2,
+                "ET": 1
+              }
+            },
+            {
+              "text": "Step back from deciding and let the two of them work out between themselves who should take the lead role.",
+              "trait_deltas": {
+                "LD": -1
+              }
+            },
+            {
+              "text": "Choose based on your own personal preference, without bothering to explain that reasoning clearly to either person involved.",
+              "trait_deltas": {
+                "LD": -1,
+                "CM": -1
+              }
+            }
           ]
         },
         {
@@ -94,10 +280,37 @@
           "topic": "CM",
           "prompt": "A client is unhappy about slipped deadlines and threatens to escalate to your director. What's your approach?",
           "options": [
-            { "text": "Avoid the client's calls until you have better news.", "trait_deltas": { "CM": -2, "LD": -1 } },
-            { "text": "Proactively reach out, acknowledge the issue honestly, present a clear recovery plan with realistic dates, and update them regularly.", "trait_deltas": { "CM": 2, "LD": 2, "ET": 1 } },
-            { "text": "Attribute the delay entirely to subcontractors/other disciplines when speaking with the client.", "trait_deltas": { "CM": -1, "ET": -1, "DR": -1 } },
-            { "text": "Promise an unrealistic recovery date just to calm the client down.", "trait_deltas": { "ET": -1, "CM": -1, "PS": -1 } }
+            {
+              "text": "Hold off on returning the client's calls for now, until you have more concrete progress or better news to share with them.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Reach out to the client proactively, acknowledge the delay honestly, and walk them through a realistic recovery plan with firm dates.",
+              "trait_deltas": {
+                "CM": 2,
+                "LD": 2,
+                "ET": 1
+              }
+            },
+            {
+              "text": "When speaking with the client, frame the delay as mostly driven by dependencies on other disciplines and subcontractors outside your direct control.",
+              "trait_deltas": {
+                "CM": -1,
+                "ET": -1,
+                "DR": -1
+              }
+            },
+            {
+              "text": "Give the client a recovery date that feels reassuring in the moment, even though you're not fully confident the team can hit it.",
+              "trait_deltas": {
+                "ET": -1,
+                "CM": -1,
+                "PS": -1
+              }
+            }
           ]
         },
         {
@@ -105,10 +318,36 @@
           "topic": "CM",
           "prompt": "A client asks directly whether your team can meet an aggressive deadline you privately doubt is realistic. What do you say?",
           "options": [
-            { "text": "Say yes to avoid disappointing them, and figure it out later.", "trait_deltas": { "ET": -1, "CM": -1, "PS": -1 } },
-            { "text": "Give an honest assessment of the risks and what would need to be true to hit the date, then propose options.", "trait_deltas": { "CM": 2, "ET": 2, "PS": 2, "LD": 1 } },
-            { "text": "Say no immediately without offering alternatives.", "trait_deltas": { "CM": -1, "PS": -1 } },
-            { "text": "Avoid giving a direct answer.", "trait_deltas": { "CM": -2 } }
+            {
+              "text": "Tell the client yes for now to avoid disappointing them, planning to work out the actual feasibility with the team later.",
+              "trait_deltas": {
+                "ET": -1,
+                "CM": -1,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Give an honest assessment of the risks and what would need to be true to hit the date, then propose realistic options.",
+              "trait_deltas": {
+                "CM": 2,
+                "ET": 2,
+                "PS": 2,
+                "LD": 1
+              }
+            },
+            {
+              "text": "Tell the client directly that the deadline isn't realistic, without offering any alternative path or compromise in the moment.",
+              "trait_deltas": {
+                "CM": -1,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Keep your answer vague and noncommittal, hoping to avoid pinning yourself down until you have more clarity later.",
+              "trait_deltas": {
+                "CM": -2
+              }
+            }
           ]
         },
         {
@@ -116,10 +355,35 @@
           "topic": "CM",
           "prompt": "A client says your own communication style in status meetings is 'too technical and hard to follow.' How do you respond?",
           "options": [
-            { "text": "Dismiss it — technical accuracy matters more than simplicity.", "trait_deltas": { "CM": -2, "LD": -1 } },
-            { "text": "Take the feedback seriously, adapt your approach for that audience, and check in for ongoing feedback.", "trait_deltas": { "CM": 2, "LD": 1, "PS": 1 } },
-            { "text": "Get defensive and explain why the client should follow your explanations more closely.", "trait_deltas": { "CM": -2, "LD": -1 } },
-            { "text": "Delegate all future client meetings to someone else without addressing the issue yourself.", "trait_deltas": { "CM": -1, "LD": -1 } }
+            {
+              "text": "Brush off the feedback, reasoning that technical accuracy in the meetings matters more than making things simpler for the client.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Take the feedback seriously, adjust your communication approach for that audience, and check in regularly for ongoing feedback afterward.",
+              "trait_deltas": {
+                "CM": 2,
+                "LD": 1,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Get a little defensive and explain to the client why they should try to follow your explanations more closely.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Hand off future client meetings to someone else on the team rather than working on adjusting your own approach.",
+              "trait_deltas": {
+                "CM": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -127,10 +391,35 @@
           "topic": "CM",
           "prompt": "Budget cuts mean reducing your team's software license count, which will slow some work. How do you communicate this internally?",
           "options": [
-            { "text": "Don't explain the reasoning — just enforce the cut.", "trait_deltas": { "CM": -2, "LD": -1 } },
-            { "text": "Explain the business context honestly, involve the team in prioritizing affected workflows, and set realistic expectations with stakeholders.", "trait_deltas": { "CM": 2, "LD": 2, "PS": 1 } },
-            { "text": "Blame 'management' vaguely without owning the decision as a leader.", "trait_deltas": { "CM": -1, "LD": -1 } },
-            { "text": "Delay telling the team until problems arise from the change.", "trait_deltas": { "CM": -2, "LD": -1 } }
+            {
+              "text": "Announce the license cut without much explanation, figuring the team just needs to adjust to the new reality quickly.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Explain the business context honestly, involve the team in prioritizing the affected workflows, and set realistic expectations with stakeholders.",
+              "trait_deltas": {
+                "CM": 2,
+                "LD": 2,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Frame the cut as something imposed vaguely by 'management above,' rather than owning the decision yourself as their leader.",
+              "trait_deltas": {
+                "CM": -1,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Hold off telling the team about the change until the reduced license count actually starts causing visible problems.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -138,10 +427,34 @@
           "topic": "CM",
           "prompt": "You need to deliver difficult news to the whole team — a valued project was cancelled or scope significantly reduced. How do you approach it?",
           "options": [
-            { "text": "Send a brief email and avoid further discussion.", "trait_deltas": { "CM": -2, "LD": -1 } },
-            { "text": "Hold a live conversation, explain context honestly, acknowledge the impact, and answer questions directly.", "trait_deltas": { "CM": 2, "LD": 2 } },
-            { "text": "Let it leak out informally rather than addressing it directly.", "trait_deltas": { "CM": -2, "LD": -1 } },
-            { "text": "Downplay the significance to avoid concern, even if that means being misleading.", "trait_deltas": { "CM": -1, "ET": -1 } }
+            {
+              "text": "Send the team a short email about the change and steer clear of further discussion unless someone directly asks.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Hold a live conversation, explain the context honestly, acknowledge the impact on the team, and answer their questions directly.",
+              "trait_deltas": {
+                "CM": 2,
+                "LD": 2
+              }
+            },
+            {
+              "text": "Let word of the change spread informally through the team rather than addressing it directly yourself in a meeting.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Downplay how significant the change really is when talking to the team, even if that stretches the truth somewhat.",
+              "trait_deltas": {
+                "CM": -1,
+                "ET": -1
+              }
+            }
           ]
         },
         {
@@ -149,10 +462,34 @@
           "topic": "CM",
           "prompt": "Two people on your team interpret your instructions for a task completely differently, causing duplicated/conflicting effort. What do you do?",
           "options": [
-            { "text": "Blame them for not asking enough questions.", "trait_deltas": { "CM": -2, "LD": -1 } },
-            { "text": "Take ownership of the miscommunication, clarify immediately, and adjust your future instructions to be more explicit.", "trait_deltas": { "CM": 2, "LD": 1, "PS": 1 } },
-            { "text": "Let them sort out the confusion themselves.", "trait_deltas": { "CM": -1, "LD": -1 } },
-            { "text": "Pick whichever interpretation is more convenient and move forward without explaining.", "trait_deltas": { "CM": -2 } }
+            {
+              "text": "Point out to the two of them that they should have asked more clarifying questions before running with their own interpretation.",
+              "trait_deltas": {
+                "CM": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Take ownership of the miscommunication, clarify the task immediately, and adjust your future instructions to be more explicit going forward.",
+              "trait_deltas": {
+                "CM": 2,
+                "LD": 1,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Leave the two of them to sort out the conflicting interpretations on their own rather than stepping in yourself.",
+              "trait_deltas": {
+                "CM": -1,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Just go with whichever interpretation is more convenient at this point, without circling back to explain the mix-up.",
+              "trait_deltas": {
+                "CM": -2
+              }
+            }
           ]
         },
         {
@@ -160,10 +497,33 @@
           "topic": "TP",
           "prompt": "Two previously siloed discipline sub-teams under you rarely collaborate and duplicate effort. How do you build a stronger sense of shared team identity?",
           "options": [
-            { "text": "Leave it as is since each sub-team still delivers its own work.", "trait_deltas": { "TP": -2 } },
-            { "text": "Create shared touchpoints (joint reviews, shared goals/recognition) and actively model cross-team collaboration yourself.", "trait_deltas": { "TP": 2, "LD": 2, "CM": 1 } },
-            { "text": "Merge them formally without addressing the underlying culture issue.", "trait_deltas": { "TP": -1 } },
-            { "text": "Address it only if a client complains about the disconnect.", "trait_deltas": { "TP": -1, "LD": -1 } }
+            {
+              "text": "Leave the two sub-teams as they are for now, since each one is still delivering its own work reasonably well.",
+              "trait_deltas": {
+                "TP": -2
+              }
+            },
+            {
+              "text": "Create shared touchpoints like joint reviews and shared recognition, and actively model cross-team collaboration yourself in day-to-day work.",
+              "trait_deltas": {
+                "TP": 2,
+                "LD": 2,
+                "CM": 1
+              }
+            },
+            {
+              "text": "Merge the two sub-teams formally on paper, without really addressing the underlying culture that's kept them siloed apart.",
+              "trait_deltas": {
+                "TP": -1
+              }
+            },
+            {
+              "text": "Hold off addressing the disconnect unless a client actually complains about duplicated effort or inconsistent coordination between the two groups.",
+              "trait_deltas": {
+                "TP": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -171,10 +531,35 @@
           "topic": "TP",
           "prompt": "A star performer on your team refuses to mentor or share knowledge with others, protecting their own indispensability. What do you do?",
           "options": [
-            { "text": "Leave them alone since their individual output is excellent.", "trait_deltas": { "TP": -1, "LD": -1 } },
-            { "text": "Have a direct conversation linking knowledge-sharing to how you evaluate senior-level contribution, and create structured opportunities for them to mentor.", "trait_deltas": { "TP": 2, "LD": 2, "CM": 1 } },
-            { "text": "Publicly criticize them for not being a team player.", "trait_deltas": { "TP": -1, "CM": -2 } },
-            { "text": "Quietly route more mentoring responsibility to others without addressing the root behavior.", "trait_deltas": { "TP": -1, "LD": -1 } }
+            {
+              "text": "Leave them be for now, since their individual output is strong enough that it seems not worth pushing on.",
+              "trait_deltas": {
+                "TP": -1,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Talk with them directly about how mentoring factors into how you evaluate senior-level contributions, and set up structured chances for them to mentor.",
+              "trait_deltas": {
+                "TP": 2,
+                "LD": 2,
+                "CM": 1
+              }
+            },
+            {
+              "text": "Call them out in front of the team for not being enough of a team player about sharing knowledge.",
+              "trait_deltas": {
+                "TP": -1,
+                "CM": -2
+              }
+            },
+            {
+              "text": "Quietly shift mentoring responsibilities onto other people instead of addressing the underlying behavior with them directly yourself.",
+              "trait_deltas": {
+                "TP": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -182,10 +567,35 @@
           "topic": "TP",
           "prompt": "Your team must absorb extra scope with no extra time, and morale is already stretched. How do you rally them?",
           "options": [
-            { "text": "Just assign the extra work and expect people to manage.", "trait_deltas": { "TP": -2, "LD": -1 } },
-            { "text": "Be transparent about the situation, involve the team in deciding how to divide the load fairly, and acknowledge the extra effort.", "trait_deltas": { "TP": 2, "LD": 2, "CM": 2 } },
-            { "text": "Take on all the extra work yourself without asking the team.", "trait_deltas": { "TP": -1, "LD": -1 } },
-            { "text": "Promise rewards you're not sure you can deliver to motivate them.", "trait_deltas": { "TP": -1, "ET": -1 } }
+            {
+              "text": "Just assign the extra scope to the team and trust everyone to manage it on top of their current workload.",
+              "trait_deltas": {
+                "TP": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Be transparent about the situation, involve the team in deciding how to divide the load fairly, and acknowledge their extra effort.",
+              "trait_deltas": {
+                "TP": 2,
+                "LD": 2,
+                "CM": 2
+              }
+            },
+            {
+              "text": "Take on most of the extra work yourself quietly, rather than asking an already-stretched team to absorb more of it.",
+              "trait_deltas": {
+                "TP": -1,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Promise the team rewards for the extra push that you're not entirely sure you'll actually be able to deliver.",
+              "trait_deltas": {
+                "TP": -1,
+                "ET": -1
+              }
+            }
           ]
         },
         {
@@ -193,10 +603,33 @@
           "topic": "TP",
           "prompt": "A remote or satellite-office team member feels excluded from key decisions made in the main office. What do you do?",
           "options": [
-            { "text": "Assume it's a minor issue since they still receive the final decisions.", "trait_deltas": { "TP": -2 } },
-            { "text": "Actively include them in relevant discussions going forward and check in on how included they feel.", "trait_deltas": { "TP": 2, "CM": 2, "LD": 1 } },
-            { "text": "Suggest they raise it themselves if it's really bothering them.", "trait_deltas": { "TP": -1, "CM": -1 } },
-            { "text": "Address it only if it starts affecting their output.", "trait_deltas": { "TP": -1 } }
+            {
+              "text": "Assume it's a fairly minor issue, since the remote team member still ends up receiving the final decisions either way.",
+              "trait_deltas": {
+                "TP": -2
+              }
+            },
+            {
+              "text": "Actively include them in relevant discussions going forward and check in regularly on how included they actually feel.",
+              "trait_deltas": {
+                "TP": 2,
+                "CM": 2,
+                "LD": 1
+              }
+            },
+            {
+              "text": "Suggest that they bring it up themselves in a meeting if the exclusion is really bothering them that much.",
+              "trait_deltas": {
+                "TP": -1,
+                "CM": -1
+              }
+            },
+            {
+              "text": "Hold off addressing it unless their output actually starts to suffer as a visible result of feeling excluded.",
+              "trait_deltas": {
+                "TP": -1
+              }
+            }
           ]
         },
         {
@@ -204,10 +637,35 @@
           "topic": "TP",
           "prompt": "A Junior and a Senior on the same task are competitive with each other rather than collaborative, and it's affecting quality. What do you do?",
           "options": [
-            { "text": "Let them work it out since some competition can be healthy.", "trait_deltas": { "TP": -1, "LD": -1 } },
-            { "text": "Set clear shared goals and structure the task so their success is interdependent, addressing the competitive dynamic directly.", "trait_deltas": { "TP": 2, "LD": 2, "DR": 1 } },
-            { "text": "Separate them onto different tasks without addressing the dynamic.", "trait_deltas": { "TP": 0, "LD": -1 } },
-            { "text": "Reprimand both without understanding the underlying dynamic.", "trait_deltas": { "TP": -1, "CM": -1 } }
+            {
+              "text": "Let the two of them work it out between themselves, since a bit of healthy competition can push quality up too.",
+              "trait_deltas": {
+                "TP": -1,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Set clear shared goals and structure the task so their success is interdependent, addressing the competitive dynamic directly with both.",
+              "trait_deltas": {
+                "TP": 2,
+                "LD": 2,
+                "DR": 1
+              }
+            },
+            {
+              "text": "Move them onto separate tasks going forward instead of addressing the competitive dynamic between them directly in conversation.",
+              "trait_deltas": {
+                "TP": 0,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Reprimand both of them for the friction without spending much time understanding what's actually driving the competitive dynamic.",
+              "trait_deltas": {
+                "TP": -1,
+                "CM": -1
+              }
+            }
           ]
         },
         {
@@ -215,10 +673,35 @@
           "topic": "PS",
           "prompt": "A team lead under you wants to skip a QA review step to hit a deadline, 'just this once.' What's your call?",
           "options": [
-            { "text": "Approve skipping QA — deadlines matter and it's a one-time thing.", "trait_deltas": { "ET": -1, "PS": -1 } },
-            { "text": "Say no, but work with the team to find a faster path to complete QA properly rather than skipping it.", "trait_deltas": { "ET": 2, "PS": 2, "LD": 1 } },
-            { "text": "Approve it without discussion since you trust the lead's judgment.", "trait_deltas": { "ET": -1, "PS": -1 } },
-            { "text": "Say no without offering any alternative path to still meet the deadline.", "trait_deltas": { "LD": -1, "PS": -1 } }
+            {
+              "text": "Approve skipping QA this one time, reasoning the deadline pressure justifies it and it's unlikely to cause real problems.",
+              "trait_deltas": {
+                "ET": -1,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Say no, but work with the team to find a genuinely faster path to complete QA properly rather than skipping it.",
+              "trait_deltas": {
+                "ET": 2,
+                "PS": 2,
+                "LD": 1
+              }
+            },
+            {
+              "text": "Approve the request without much discussion, since you generally trust the lead's judgment on calls like this one.",
+              "trait_deltas": {
+                "ET": -1,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Say no to skipping QA, but don't offer any alternative way to still try to meet the deadline.",
+              "trait_deltas": {
+                "LD": -1,
+                "PS": -1
+              }
+            }
           ]
         },
         {
@@ -226,10 +709,37 @@
           "topic": "PS",
           "prompt": "A client's facilities team insists on a design change that conflicts with a code-compliance issue your BIM team identified. What do you do?",
           "options": [
-            { "text": "Implement the client's requested change since they're paying for the project.", "trait_deltas": { "ET": -2, "PS": -1 }, "flag": "ethics_concern" },
-            { "text": "Clearly and formally communicate the code conflict and risk, get the decision documented, and escalate internally and to the client's leadership before implementing anything non-compliant.", "trait_deltas": { "ET": 2, "PS": 2, "CM": 2, "LD": 1 } },
-            { "text": "Implement the change but have a junior document it quietly as a CYA measure, without informing the client formally.", "trait_deltas": { "ET": -1, "CM": -1 } },
-            { "text": "Refuse to discuss it further with the client.", "trait_deltas": { "CM": -2, "DR": -1 } }
+            {
+              "text": "Go ahead with the client's requested change, reasoning that they're paying for the project and it's ultimately their call.",
+              "trait_deltas": {
+                "ET": -2,
+                "PS": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "Clearly document the code conflict and risk, get the decision formally recorded, and escalate internally and to the client's leadership before implementing anything.",
+              "trait_deltas": {
+                "ET": 2,
+                "PS": 2,
+                "CM": 2,
+                "LD": 1
+              }
+            },
+            {
+              "text": "Implement the change as requested, but quietly have a junior document it as a CYA measure rather than raising it with the client formally.",
+              "trait_deltas": {
+                "ET": -1,
+                "CM": -1
+              }
+            },
+            {
+              "text": "Refuse to discuss the code conflict with the client any further, treating the matter as effectively already closed.",
+              "trait_deltas": {
+                "CM": -2,
+                "DR": -1
+              }
+            }
           ]
         },
         {
@@ -237,10 +747,37 @@
           "topic": "PS",
           "prompt": "Your team can hit the deadline OR maintain full quality, but not both, and the client hasn't been made aware of this trade-off. What's your approach as manager?",
           "options": [
-            { "text": "Quietly cut quality to hit the deadline without telling the client.", "trait_deltas": { "PS": -2, "ET": -1, "CM": -1 }, "flag": "ethics_concern" },
-            { "text": "Present the trade-off honestly to the client and let them decide which matters more, or negotiate additional time/resource.", "trait_deltas": { "PS": 2, "CM": 2, "ET": 1 } },
-            { "text": "Miss the deadline without any communication in advance.", "trait_deltas": { "PS": -2, "CM": -2 } },
-            { "text": "Push the team to work unsustainable hours to try to hit both, without addressing the systemic issue.", "trait_deltas": { "PS": -1, "LD": -1 } }
+            {
+              "text": "Quietly cut some quality to hit the deadline, reasoning the client doesn't need to know about the trade-off being made.",
+              "trait_deltas": {
+                "PS": -2,
+                "ET": -1,
+                "CM": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "Present the trade-off honestly to the client and let them decide which matters more, or negotiate for more time or resources.",
+              "trait_deltas": {
+                "PS": 2,
+                "CM": 2,
+                "ET": 1
+              }
+            },
+            {
+              "text": "Miss the deadline without giving the client any advance warning, hoping the quality outcome will speak for itself later.",
+              "trait_deltas": {
+                "PS": -2,
+                "CM": -2
+              }
+            },
+            {
+              "text": "Push the team to work unsustainable hours trying to hit both targets, without really addressing the systemic scheduling issue.",
+              "trait_deltas": {
+                "PS": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -248,10 +785,33 @@
           "topic": "PS",
           "prompt": "Two competing internal priorities — a strategic new client and an existing client's ongoing work — both need your best people at the same time. How do you resolve the resourcing conflict?",
           "options": [
-            { "text": "Give the new client whatever they want since they're strategically important.", "trait_deltas": { "PS": -1, "OM": -1 } },
-            { "text": "Evaluate objectively against business priorities, communicate trade-offs transparently to both stakeholders, and look for creative resourcing options before choosing.", "trait_deltas": { "PS": 2, "OM": 1, "CM": 1 } },
-            { "text": "Default to whichever client complains loudest.", "trait_deltas": { "PS": -2 } },
-            { "text": "Split your best people evenly regardless of actual project needs.", "trait_deltas": { "PS": -1 } }
+            {
+              "text": "Give the new strategic client whatever resourcing they ask for, since landing them well feels like the higher priority.",
+              "trait_deltas": {
+                "PS": -1,
+                "OM": -1
+              }
+            },
+            {
+              "text": "Evaluate objectively against business priorities, communicate the trade-offs transparently to both stakeholders, and look for creative resourcing options first.",
+              "trait_deltas": {
+                "PS": 2,
+                "OM": 1,
+                "CM": 1
+              }
+            },
+            {
+              "text": "Default to whichever client is currently pushing hardest or complaining the loudest about needing more resourcing support.",
+              "trait_deltas": {
+                "PS": -2
+              }
+            },
+            {
+              "text": "Split your best people evenly across both, regardless of what each project's actual staffing needs really are.",
+              "trait_deltas": {
+                "PS": -1
+              }
+            }
           ]
         },
         {
@@ -259,10 +819,34 @@
           "topic": "PS",
           "prompt": "A long-standing process at your studio clearly isn't working anymore as the studio has grown, but changing it will be disruptive short-term. What do you do?",
           "options": [
-            { "text": "Leave it alone since change is disruptive and risky.", "trait_deltas": { "PS": -1, "OM": -1 } },
-            { "text": "Propose and pilot a change with a clear plan to manage the short-term disruption, gathering team input first.", "trait_deltas": { "PS": 2, "OM": 2, "LD": 1 } },
-            { "text": "Force the change immediately without piloting or consulting anyone.", "trait_deltas": { "PS": -1, "TP": -1 } },
-            { "text": "Complain about the process being outdated without proposing anything concrete.", "trait_deltas": { "PS": -1 } }
+            {
+              "text": "Leave the process alone for now, since changing something that's embedded this deeply feels risky and disruptive short-term.",
+              "trait_deltas": {
+                "PS": -1,
+                "OM": -1
+              }
+            },
+            {
+              "text": "Propose and pilot a change with a clear plan to manage the short-term disruption, gathering team input before rolling it out.",
+              "trait_deltas": {
+                "PS": 2,
+                "OM": 2,
+                "LD": 1
+              }
+            },
+            {
+              "text": "Force the change through right away without piloting it or consulting the team about how it'll actually affect their work.",
+              "trait_deltas": {
+                "PS": -1,
+                "TP": -1
+              }
+            },
+            {
+              "text": "Point out repeatedly that the process is outdated, without actually putting together a concrete proposal to fix it.",
+              "trait_deltas": {
+                "PS": -1
+              }
+            }
           ]
         },
         {
@@ -270,10 +854,36 @@
           "topic": "DR",
           "prompt": "Two department leads under you have an ongoing personal conflict that's starting to affect team morale and coordination quality. What do you do?",
           "options": [
-            { "text": "Avoid getting involved since it's a personal matter.", "trait_deltas": { "LD": -2, "DR": -2 } },
-            { "text": "Meet with each separately, then together, understand root causes, establish clear working agreements, and follow up over time.", "trait_deltas": { "LD": 2, "DR": 2, "CM": 2 } },
-            { "text": "Publicly reprimand both in a team meeting.", "trait_deltas": { "DR": -1, "CM": -1, "LD": -1 } },
-            { "text": "Transfer one of them immediately without addressing the root issue.", "trait_deltas": { "LD": -1, "DR": -1 } }
+            {
+              "text": "Stay out of it for now, treating the tension between the two leads as more of a personal matter.",
+              "trait_deltas": {
+                "LD": -2,
+                "DR": -2
+              }
+            },
+            {
+              "text": "Meet with each separately, then together, understand the root causes, establish clear working agreements, and follow up over time.",
+              "trait_deltas": {
+                "LD": 2,
+                "DR": 2,
+                "CM": 2
+              }
+            },
+            {
+              "text": "Address the tension between them openly in a team meeting so everyone understands it needs to stop right away.",
+              "trait_deltas": {
+                "DR": -1,
+                "CM": -1,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Transfer one of them to a different team fairly quickly, without really digging into what's driving the conflict.",
+              "trait_deltas": {
+                "LD": -1,
+                "DR": -1
+              }
+            }
           ]
         },
         {
@@ -281,10 +891,34 @@
           "topic": "DR",
           "prompt": "A dispute escalates between your team and another team (led by a peer manager) over who's responsible for a coordination failure that affected the client. What do you do?",
           "options": [
-            { "text": "Publicly blame the other team to protect your own team's reputation.", "trait_deltas": { "DR": -2, "CM": -1 } },
-            { "text": "Meet privately with the peer manager first to understand both sides, focus on resolving the root cause and preventing recurrence rather than assigning blame, then align on a joint message.", "trait_deltas": { "DR": 2, "CM": 2, "LD": 1 } },
-            { "text": "Avoid engaging with the other manager and let the client draw their own conclusions.", "trait_deltas": { "DR": -2 } },
-            { "text": "Escalate immediately to senior leadership without attempting to resolve it peer-to-peer first.", "trait_deltas": { "DR": -1, "LD": -1 } }
+            {
+              "text": "Frame the coordination failure to the client as mainly the other team's responsibility, to protect your own team's standing.",
+              "trait_deltas": {
+                "DR": -2,
+                "CM": -1
+              }
+            },
+            {
+              "text": "Meet privately with the peer manager first, focus on root cause and preventing recurrence rather than blame, then align on a joint message.",
+              "trait_deltas": {
+                "DR": 2,
+                "CM": 2,
+                "LD": 1
+              }
+            },
+            {
+              "text": "Avoid engaging directly with the other manager and let the client draw their own conclusions about what happened.",
+              "trait_deltas": {
+                "DR": -2
+              }
+            },
+            {
+              "text": "Escalate the disagreement straight to senior leadership rather than attempting to resolve it peer-to-peer with the other manager first.",
+              "trait_deltas": {
+                "DR": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -292,10 +926,34 @@
           "topic": "DR",
           "prompt": "Two of your direct reports have a disagreement about technical approach that's becoming personal rather than professional. What do you do?",
           "options": [
-            { "text": "Let them work it out, since you don't want to seem like you're taking sides.", "trait_deltas": { "DR": -2, "LD": -1 } },
-            { "text": "Intervene early, separate the technical disagreement from the personal friction, mediate a resolution on the technical point, and address the interpersonal tension directly.", "trait_deltas": { "DR": 2, "LD": 2, "CM": 1 } },
-            { "text": "Side with whichever one is more senior to end the disagreement quickly.", "trait_deltas": { "DR": -2 } },
-            { "text": "Reassign one of them to a different task to avoid dealing with the conflict.", "trait_deltas": { "DR": -1, "LD": -1 } }
+            {
+              "text": "Let the two of them work it out, since stepping in might make it look like you're taking sides.",
+              "trait_deltas": {
+                "DR": -2,
+                "LD": -1
+              }
+            },
+            {
+              "text": "Intervene early, separate the technical disagreement from the personal friction, mediate a resolution, and address the interpersonal tension directly.",
+              "trait_deltas": {
+                "DR": 2,
+                "LD": 2,
+                "CM": 1
+              }
+            },
+            {
+              "text": "Side with whichever one is more senior in the discussion, mainly to bring the disagreement to a quicker end.",
+              "trait_deltas": {
+                "DR": -2
+              }
+            },
+            {
+              "text": "Reassign one of them to a different task, mainly as a way to sidestep dealing with the conflict directly.",
+              "trait_deltas": {
+                "DR": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -303,10 +961,33 @@
           "topic": "OM",
           "prompt": "You notice a pattern where multiple projects at your studio hit avoidable delays for the same root-cause reason. What's your response as manager?",
           "options": [
-            { "text": "Handle each project's delay individually as it comes up without addressing the pattern.", "trait_deltas": { "OM": -2, "PS": -1 } },
-            { "text": "Raise the systemic pattern with studio leadership, propose a root-cause fix, and track whether it actually improves outcomes across projects.", "trait_deltas": { "OM": 2, "LD": 1, "PS": 1 } },
-            { "text": "Assume other managers will notice and raise it themselves.", "trait_deltas": { "OM": -2 } },
-            { "text": "Mention it informally in passing without pursuing a real fix.", "trait_deltas": { "OM": -1 } }
+            {
+              "text": "Handle each project's delay on its own as it comes up, without really stepping back to look at the pattern.",
+              "trait_deltas": {
+                "OM": -2,
+                "PS": -1
+              }
+            },
+            {
+              "text": "Bring the recurring pattern to studio leadership, push for a root-cause fix, and follow up on whether it actually moves outcomes across projects.",
+              "trait_deltas": {
+                "OM": 2,
+                "LD": 1,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Assume other managers are likely noticing the same pattern too and will probably raise it themselves eventually.",
+              "trait_deltas": {
+                "OM": -2
+              }
+            },
+            {
+              "text": "Mention the pattern informally in passing to a few people, without really pushing for a concrete fix afterward.",
+              "trait_deltas": {
+                "OM": -1
+              }
+            }
           ]
         },
         {
@@ -314,10 +995,34 @@
           "topic": "OM",
           "prompt": "A decision that's good for your team's short-term numbers would be mildly harmful to the studio's reputation with a client relationship that matters long-term. What do you do?",
           "options": [
-            { "text": "Prioritize your team's short-term numbers since that's what you're measured on.", "trait_deltas": { "OM": -2, "ET": -1 } },
-            { "text": "Weigh the long-term studio/client relationship appropriately, even if it means a less favorable short-term outcome for your own team's metrics, and explain the reasoning upward.", "trait_deltas": { "OM": 2, "LD": 1, "ET": 1 } },
-            { "text": "Make the short-term-favorable choice without considering or mentioning the long-term angle.", "trait_deltas": { "OM": -2 } },
-            { "text": "Avoid making the decision and hope it resolves itself.", "trait_deltas": { "OM": -1, "LD": -1 } }
+            {
+              "text": "Prioritize your team's short-term numbers, reasoning that's mainly what you're measured on day to day as a manager.",
+              "trait_deltas": {
+                "OM": -2,
+                "ET": -1
+              }
+            },
+            {
+              "text": "Weigh the long-term studio and client relationship appropriately, even if it means a weaker short-term outcome, and explain that reasoning upward.",
+              "trait_deltas": {
+                "OM": 2,
+                "LD": 1,
+                "ET": 1
+              }
+            },
+            {
+              "text": "Make the short-term-favorable choice for your team without really raising or considering the longer-term angle with anyone.",
+              "trait_deltas": {
+                "OM": -2
+              }
+            },
+            {
+              "text": "Avoid making the call for now and hope the situation somehow resolves itself without your direct involvement.",
+              "trait_deltas": {
+                "OM": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -325,10 +1030,37 @@
           "topic": "ET",
           "prompt": "Senior management asks you to reduce hours reported to a client without reducing the actual work required, to preserve a fee cap. What do you do?",
           "options": [
-            { "text": "Comply, since it's a direction from senior management.", "trait_deltas": { "ET": -2, "LD": -1 }, "flag": "ethics_concern" },
-            { "text": "Push back clearly, explain the ethical/legal risk of misreporting billed hours, and propose alternatives (scope renegotiation, efficiency review).", "trait_deltas": { "ET": 2, "LD": 2, "CM": 1 } },
-            { "text": "Comply, but keep a private record for yourself in case of future questions.", "trait_deltas": { "ET": -1, "LD": -1 }, "flag": "ethics_concern" },
-            { "text": "Ignore the instruction without addressing it directly with management.", "trait_deltas": { "CM": -1, "LD": -1 } }
+            {
+              "text": "Go along with it since it's a direct instruction from senior management, and questioning it doesn't feel worth the friction.",
+              "trait_deltas": {
+                "ET": -2,
+                "LD": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "Push back clearly, explain the ethical and legal risk of misreporting hours, and propose alternatives like scope renegotiation or an efficiency review.",
+              "trait_deltas": {
+                "ET": 2,
+                "LD": 2,
+                "CM": 1
+              }
+            },
+            {
+              "text": "Go along with the instruction for now, but quietly keep your own private record of it in case questions come up later.",
+              "trait_deltas": {
+                "ET": -1,
+                "LD": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "Quietly decide not to follow the instruction, without ever actually raising your concerns about it directly with management.",
+              "trait_deltas": {
+                "CM": -1,
+                "LD": -1
+              }
+            }
           ]
         },
         {
@@ -336,10 +1068,38 @@
           "topic": "ET",
           "prompt": "You discover a deliverable sent to a client last week contained a significant, uncaught modeling error affecting cost estimates. What do you do?",
           "options": [
-            { "text": "Wait to see if the client notices before saying anything.", "trait_deltas": { "ET": -2, "CM": -1 }, "flag": "ethics_concern" },
-            { "text": "Proactively notify the client as soon as possible, explain the correction, and review internal QA to prevent recurrence.", "trait_deltas": { "ET": 2, "CM": 2, "LD": 2, "PS": 1 } },
-            { "text": "Correct it quietly in the next deliverable without flagging the earlier error.", "trait_deltas": { "ET": -2, "CM": -1 }, "flag": "ethics_concern" },
-            { "text": "Attribute the error to the software or an external vendor when informing the client.", "trait_deltas": { "ET": -1, "CM": -1 } }
+            {
+              "text": "Hold off saying anything for now, to see whether the client happens to notice the error on their own first.",
+              "trait_deltas": {
+                "ET": -2,
+                "CM": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "Proactively notify the client as soon as possible, explain the correction clearly, and review internal QA to prevent recurrence.",
+              "trait_deltas": {
+                "ET": 2,
+                "CM": 2,
+                "LD": 2,
+                "PS": 1
+              }
+            },
+            {
+              "text": "Quietly fix the error in the next deliverable, without flagging that the earlier version had actually contained a mistake.",
+              "trait_deltas": {
+                "ET": -2,
+                "CM": -1
+              },
+              "flag": "ethics_concern"
+            },
+            {
+              "text": "When informing the client, attribute the error mainly to the software or an external vendor rather than your own team.",
+              "trait_deltas": {
+                "ET": -1,
+                "CM": -1
+              }
+            }
           ]
         }
       ]

@@ -40,7 +40,7 @@ export default function HomePage() {
                 Modeler / Senior Modeler
               </h2>
               <p className="mt-2 text-sm text-[var(--md-on-surface-variant)] leading-relaxed">
-                30-question, 30-minute situational-judgment assessment covering team play,
+                30-question, 45-minute situational-judgment assessment covering team play,
                 communication, problem-solving, leadership, dispute resolution, organizational
                 mindset, and ethics &amp; integrity. Technical/software skill is assessed
                 separately.
@@ -61,7 +61,7 @@ export default function HomePage() {
                 Assistant Manager / Manager
               </h2>
               <p className="mt-2 text-sm text-[var(--md-on-surface-variant)] leading-relaxed">
-                30-question, 30-minute situational-judgment assessment covering leadership,
+                30-question, 45-minute situational-judgment assessment covering leadership,
                 dispute resolution, communication, organizational mindset, team play,
                 problem-solving, and ethics &amp; integrity under managerial pressure.
               </p>
