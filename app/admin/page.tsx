@@ -73,12 +73,12 @@ export default async function AdminDashboardPage() {
     <AdminShell userEmail={user.email} role={myProfile?.role ?? null}>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--md-on-surface)]">Candidate sessions</h1>
-          <p className="text-sm text-[var(--md-on-surface-variant)] mt-0.5">
+          <h1 className="text-fs-section text-[var(--text-dark)]">Candidate sessions</h1>
+          <p className="text-sm text-[var(--text-secondary)] mt-0.5">
             Review submitted assessments and ethics-concern flags.
           </p>
         </div>
-        <p className="text-sm text-[var(--md-on-surface-variant)] flex-none">
+        <p className="text-sm text-[var(--text-secondary)] flex-none">
           {sessions.length} total
         </p>
       </div>
@@ -111,7 +111,7 @@ export default async function AdminDashboardPage() {
         <div className="stat-tile">
           <div
             className="stat-tile-icon"
-            style={{ background: "var(--md-error-container)", color: "var(--md-error)" }}
+            style={{ background: "var(--md-warning-container)", color: "var(--md-warning)" }}
           >
             <Flag size={20} />
           </div>

@@ -46,32 +46,40 @@ export default async function TakeTestLandingPage({
         <div className="max-w-xl w-full surface-card p-8 space-y-6 fade-in-up">
           <div>
             <div className="badge badge-primary mb-3">{schema.program}</div>
-            <h1 className="text-2xl font-bold text-[var(--md-on-surface)]">{data.title}</h1>
+            <h1 className="text-fs-section text-[var(--md-on-surface)]">{data.title}</h1>
             <p className="mt-2 text-[var(--md-on-surface-variant)] text-sm leading-relaxed">
               {schema.description}
             </p>
           </div>
 
-          <dl className="grid grid-cols-2 gap-4 text-sm">
-            <div className="rounded-[var(--radius-md)] bg-[var(--md-surface-variant)] p-4">
-              <dt className="text-[var(--md-on-surface-variant)] flex items-center gap-1.5 mb-1">
-                <Clock3 size={14} /> Duration
-              </dt>
-              <dd className="font-semibold text-[var(--md-on-surface)]">
-                {data.duration_minutes} min
-              </dd>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="stat-tile">
+              <div
+                className="stat-tile-icon"
+                style={{ background: "var(--md-primary-container)", color: "var(--md-primary)" }}
+              >
+                <Clock3 size={18} />
+              </div>
+              <div>
+                <div className="stat-tile-value">{data.duration_minutes} min</div>
+                <div className="stat-tile-label">Duration</div>
+              </div>
             </div>
-            <div className="rounded-[var(--radius-md)] bg-[var(--md-surface-variant)] p-4">
-              <dt className="text-[var(--md-on-surface-variant)] flex items-center gap-1.5 mb-1">
-                <ListChecks size={14} /> Situational judgment
-              </dt>
-              <dd className="font-semibold text-[var(--md-on-surface)]">
-                {totalQuestions} questions
-              </dd>
+            <div className="stat-tile">
+              <div
+                className="stat-tile-icon"
+                style={{ background: "var(--md-primary-container)", color: "var(--md-primary)" }}
+              >
+                <ListChecks size={18} />
+              </div>
+              <div>
+                <div className="stat-tile-value">{totalQuestions}</div>
+                <div className="stat-tile-label">Situational judgment questions</div>
+              </div>
             </div>
-          </dl>
+          </div>
 
-          <div className="rounded-[var(--radius-md)] bg-[var(--md-warning-container)] text-[var(--md-on-warning-container)] text-sm p-3.5 flex items-start gap-2.5">
+          <div className="rounded-[var(--radius-lg)] bg-[var(--md-warning-container)] text-[var(--md-on-warning-container)] text-sm p-4 flex items-start gap-2.5">
             <TimerReset size={18} className="flex-none mt-0.5" />
             <span>
               Once you start, a countdown timer begins and the test will auto-submit when time

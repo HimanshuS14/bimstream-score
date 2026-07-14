@@ -31,8 +31,13 @@ export async function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
   const isLoginPage = pathname === "/admin/login";
+  // The password-reset recovery session is only established client-side
+  // (Supabase parses it out of the URL hash fragment, which never reaches
+  // this server-side check), so this route can't be gated on `user` like
+  // every other /admin page - it has to stay reachable pre-auth.
+  const isResetPasswordPage = pathname === "/admin/reset-password";
 
-  if (pathname.startsWith("/admin") && !isLoginPage && !user) {
+  if (pathname.startsWith("/admin") && !isLoginPage && !isResetPasswordPage && !user) {
     const redirectUrl = new URL("/admin/login", request.url);
     return NextResponse.redirect(redirectUrl);
   }

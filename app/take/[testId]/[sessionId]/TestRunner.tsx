@@ -200,7 +200,7 @@ export default function TestRunner({ testId, sessionId, title, durationMinutes, 
           return (
             <section key={sIdx} className="space-y-4">
               <div className="border-b border-[var(--md-outline-variant)] pb-3">
-                <h2 className="text-xs font-semibold uppercase tracking-wide text-[var(--md-on-surface-variant)]">
+                <h2 className="text-fs-label">
                   {section.type === "situational_judgment" ? "Situational judgment" : section.type}
                 </h2>
                 <p className="text-sm text-[var(--md-on-surface-variant)] mt-1">

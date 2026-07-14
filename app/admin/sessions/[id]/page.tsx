@@ -130,11 +130,11 @@ export default async function SessionDetailPage({
     <AdminShell userEmail={user.email} role={myProfile?.role ?? null}>
       <div className="mb-6 flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-bold text-[var(--md-on-surface)]">
+          <h1 className="text-fs-section text-[var(--text-dark)]">
             {session.candidates?.name ?? "Candidate"}
           </h1>
-          <p className="text-[var(--md-on-surface-variant)] text-sm">{session.candidates?.email}</p>
-          <p className="text-[var(--md-on-surface-variant)] text-sm">
+          <p className="text-sm text-[var(--text-secondary)] mt-0.5">{session.candidates?.email}</p>
+          <p className="text-sm text-[var(--text-secondary)]">
             {session.tests?.title ?? session.test_id} · Target role:{" "}
             {session.candidates?.target_role ?? "—"}
           </p>

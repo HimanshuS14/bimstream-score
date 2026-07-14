@@ -194,9 +194,9 @@ export default function TeamManager({
                         type="button"
                         disabled={isBusy}
                         onClick={() => handleRemove(m.id)}
-                        className="text-[var(--md-error)] font-medium hover:underline inline-flex items-center gap-1 disabled:opacity-50"
+                        className="btn btn-danger !px-3 !py-1.5 text-xs"
                       >
-                        <Trash2 size={13} /> Remove
+                        <Trash2 size={13} /> {isBusy ? "Removing…" : "Remove"}
                       </button>
                     )}
                   </td>

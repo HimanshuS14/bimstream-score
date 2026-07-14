@@ -38,7 +38,7 @@ export default function StartForm({ testId }: { testId: TestId }) {
           required
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="input"
+          className="input input-lg"
           placeholder="Jane Doe"
         />
       </div>
@@ -52,7 +52,7 @@ export default function StartForm({ testId }: { testId: TestId }) {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="input"
+          className="input input-lg"
           placeholder="jane@example.com"
         />
       </div>
@@ -64,7 +64,7 @@ export default function StartForm({ testId }: { testId: TestId }) {
           id="targetRole"
           value={targetRole}
           onChange={(e) => setTargetRole(e.target.value)}
-          className="input"
+          className="input input-lg"
           placeholder="e.g. Senior Modeler"
         />
       </div>

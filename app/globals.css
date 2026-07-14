@@ -26,27 +26,32 @@
   --md-on-surface-variant: #5f6368;
   --md-on-surface-muted: #80868b;
 
-  /* Accent - a richer indigo-blue than the original flat Google-blue, plus a
-     second stop for the gradient variant used on the primary CTA/hero only. */
-  --md-primary: #3457e0;
-  --md-primary-2: #7c5cff;
-  --md-primary-hover: #2a46c4;
-  --md-primary-active: #223aa8;
-  --md-primary-container: #eaedff;
+  /* Accent - enterprise blue -> green (v6, matches BIMstream's own logo
+     colors), replacing the earlier indigo/violet gradient. Same variable
+     names as before so every existing .btn-primary / .progress-fill /
+     link / focus-ring usage across the app repaints automatically. */
+  --md-primary: #2e7bef;
+  --md-primary-2: #7bc342;
+  --md-primary-hover: #2564c9;
+  --md-primary-active: #1d52a8;
+  --md-primary-container: #e8f1fd;
   --md-on-primary: #ffffff;
-  --md-on-primary-container: #26339e;
+  --md-on-primary-container: #1849a0;
   --md-gradient-primary: linear-gradient(135deg, var(--md-primary) 0%, var(--md-primary-2) 100%);
 
-  /* Semantic colors */
-  --md-success: #188038;
-  --md-success-container: #e6f4ea;
-  --md-on-success-container: #0d652d;
-  --md-warning: #b06000;
-  --md-warning-container: #fef7e0;
-  --md-on-warning-container: #7a4a00;
-  --md-error: #c5221f;
-  --md-error-container: #fce8e6;
-  --md-on-error-container: #8c1d18;
+  /* Semantic colors (v6 enterprise palette) */
+  --md-success: #12b76a;
+  --md-success-container: #e3f9ef;
+  --md-on-success-container: #0a6e42;
+  --md-warning: #f79009;
+  --md-warning-container: #fef2e1;
+  --md-on-warning-container: #93500a;
+  --md-error: #d92d20;
+  --md-error-container: #fbe8e6;
+  --md-on-error-container: #91231a;
+  --md-info: #2e90fa;
+  --md-info-container: #e7f1fe;
+  --md-on-info-container: #164e8a;
 
   /* Radius scale */
   --radius-sm: 8px;
@@ -61,7 +66,7 @@
   --elevation-2: 0 1px 2px 0 rgba(32, 33, 36, 0.08), 0 2px 6px 2px rgba(32, 33, 36, 0.1);
   --elevation-3: 0 4px 8px 3px rgba(32, 33, 36, 0.1), 0 1px 3px 0 rgba(32, 33, 36, 0.16);
   /* Tinted "glow" shadow for hover-lift on interactive cards/primary buttons */
-  --elevation-primary-glow: 0 8px 24px -8px rgba(52, 87, 224, 0.45);
+  --elevation-primary-glow: 0 8px 24px -8px rgba(46, 123, 239, 0.45);
 
   /* Snappier, more "premium SaaS" easing than a linear/ease-in-out default -
      fast start, gentle settle. Used for hover-lift and entrance transitions. */
@@ -103,13 +108,36 @@
   --dark-gradient-hero: linear-gradient(135deg, var(--dark-navy-1) 0%, var(--dark-navy-2) 100%);
   --accent-cyan: #35e0d8;
   --accent-cyan-2: #3457e0;
-  --dark-gradient-accent-text: linear-gradient(90deg, var(--accent-cyan) 0%, #6ee7ff 100%);
-  --dark-gradient-icon: linear-gradient(135deg, var(--accent-cyan-2) 0%, var(--accent-cyan) 100%);
+  /* v6: repointed from the cyan Tijori-matching gradient to the enterprise
+     blue -> green gradient below, so the existing .text-gradient-cyan /
+     .glass-icon-chip classes (still used by anything not yet migrated to the
+     v6 homepage) automatically pick up the new brand colors too. */
+  --dark-gradient-accent-text: linear-gradient(90deg, var(--md-primary) 0%, var(--md-primary-2) 100%);
+  --dark-gradient-icon: linear-gradient(135deg, var(--md-primary) 0%, var(--md-primary-2) 100%);
   --on-dark-primary: #ffffff;
   --on-dark-secondary: #a6b0c3;
   --on-dark-border: rgba(255, 255, 255, 0.1);
   --on-dark-surface: rgba(255, 255, 255, 0.05);
   --on-dark-surface-hover: rgba(255, 255, 255, 0.08);
+
+  /* -------------------------------------------------------------------
+     v6 "Enterprise HR platform" tokens - blue/green palette taken from
+     the BIMstream logo, replacing the marketing-site look with something
+     closer to Workday/Fiori/Lightning: trustworthy, scientific, neutral.
+     Used by the new homepage/login (.hero-balanced/.mesh-bg/.floating-card)
+     and, going forward, the admin sidebar/dashboard.
+     ------------------------------------------------------------------- */
+  --bg-dark: #101418;
+  --surface-dark: #1b2128;
+  --surface-medium: #2b333c;
+  --bg-light: #f6f7f8;
+  --card: #ffffff;
+  --border-enterprise: #d9dee3;
+  --enterprise-blue: var(--md-primary);
+  --enterprise-green: var(--md-primary-2);
+  --text-dark: #1e293b;
+  --text-secondary: #667085;
+  --text-muted: #98a2b3;
 }
 
 @theme inline {
@@ -283,6 +311,16 @@ a {
   color: var(--md-on-surface);
 }
 
+.btn-danger {
+  background: var(--md-error);
+  color: #ffffff;
+  box-shadow: var(--elevation-1);
+}
+.btn-danger:hover:not(:disabled) {
+  background: #b3241a;
+  box-shadow: var(--elevation-2);
+}
+
 /* ---------------------------------------------------------------------------
    Inputs
    --------------------------------------------------------------------------- */
@@ -400,6 +438,7 @@ a {
 .badge-error { background: var(--md-error-container); color: var(--md-on-error-container); }
 .badge-neutral { background: var(--md-surface-variant); color: var(--md-on-surface-variant); }
 .badge-primary { background: var(--md-primary-container); color: var(--md-on-primary-container); }
+.badge-info { background: var(--md-info-container); color: var(--md-on-info-container); }
 
 /* Flagged table rows — a distinct, unmissable treatment for ethics-flag rows */
 .row-flagged {
@@ -547,6 +586,148 @@ a {
 }
 @media (min-width: 900px) {
   .split-auth {
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 7fr 3fr;
   }
+}
+
+/* Paired "Logo + product name" lockup, matching the reference's
+   "BIMstream TIJORI" wordmark pairing - the logo image stays as-is (icon +
+   "BIMstream" text baked into the asset), and a large bold product name sits
+   immediately beside it at a matching scale. */
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+.brand-lockup-product {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--on-dark-primary);
+}
+.brand-lockup-product-lg {
+  font-size: 2.5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   v6 enterprise homepage/login primitives
+   --------------------------------------------------------------------------- */
+
+/* Full-bleed background: dark neutral on the left ~55%, transitioning to the
+   light surface on the right ~45%, per the reference design (not a hard
+   2-column split like the old .split-auth - the light zone bleeds in via a
+   soft diagonal gradient so a floating card can sit across the seam). */
+.hero-balanced {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  background: linear-gradient(
+    115deg,
+    var(--bg-dark) 0%,
+    var(--bg-dark) 38%,
+    var(--surface-medium) 55%,
+    var(--bg-light) 78%,
+    var(--bg-light) 100%
+  );
+}
+
+/* Subtle network-mesh / node-graph motif - nodes + connecting lines, tiled,
+   very low opacity. Stands in for "psychometric graph" / "AI neural
+   structure" texture without using literal illustrations or photography. */
+.mesh-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cg fill='none' stroke='%232E7BEF' stroke-width='0.7' stroke-opacity='0.5'%3E%3Cline x1='12' y1='24' x2='68' y2='58'/%3E%3Cline x1='68' y1='58' x2='138' y2='34'/%3E%3Cline x1='68' y1='58' x2='92' y2='118'/%3E%3Cline x1='92' y1='118' x2='148' y2='138'/%3E%3Cline x1='18' y1='128' x2='92' y2='118'/%3E%3Cline x1='138' y1='34' x2='150' y2='90'/%3E%3C/g%3E%3Cg fill='%232E7BEF' fill-opacity='0.6'%3E%3Ccircle cx='12' cy='24' r='2.4'/%3E%3Ccircle cx='68' cy='58' r='3'/%3E%3Ccircle cx='138' cy='34' r='2.4'/%3E%3Ccircle cx='92' cy='118' r='2.6'/%3E%3Ccircle cx='148' cy='138' r='2.2'/%3E%3Ccircle cx='18' cy='128' r='2.2'/%3E%3Ccircle cx='150' cy='90' r='2'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Large floating white card (login/register panel) - sits on top of
+   .hero-balanced with generous margin on every side and its own shadow,
+   rather than filling a hard-edged panel. Width is constrained by the
+   parent wrapper (max-w-[500px] in the page markup). */
+.floating-card {
+  position: relative;
+  z-index: 10;
+  background: var(--card);
+  border-radius: 24px;
+  box-shadow: 0 32px 64px -16px rgba(16, 20, 24, 0.35), 0 0 0 1px rgba(16, 20, 24, 0.05);
+  padding: 2.5rem;
+}
+@media (min-width: 640px) {
+  .floating-card {
+    padding: 3rem;
+  }
+}
+
+/* Typography scale, per the enterprise spec (hero/h1/h2/section/label).
+   Applied selectively on marketing-style surfaces (homepage hero) - dense
+   dashboard/table/test-taking screens keep their existing tuned sizes. */
+.text-fs-hero {
+  font-size: clamp(2.5rem, 2rem + 2vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.text-fs-h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.text-fs-h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.text-fs-section {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.text-fs-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Enterprise input sizing (52-56px tall) - opt-in via an additional class
+   next to .input, used on the homepage login/register card. The dense
+   test-taking/admin forms keep the smaller default .input height. */
+.input-lg {
+  padding: 0.9375rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+.input-lg.input-with-icon {
+  padding-left: 2.75rem;
+}
+.input-icon {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.input-icon-trailing {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.input-icon-trailing:hover {
+  color: var(--text-dark);
 }
