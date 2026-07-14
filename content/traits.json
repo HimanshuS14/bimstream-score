@@ -1,0 +1,12 @@
+{
+  "traits": [
+    { "key": "LD", "name": "Leadership & Decision-Making", "description": "Ownership, delegation, calm decisiveness, and ability to guide others, especially under pressure." },
+    { "key": "TP", "name": "Team Play", "description": "Collaboration, supporting teammates, sharing credit fairly, avoiding silo behavior, cross-discipline cooperation." },
+    { "key": "CM", "name": "Communication", "description": "Clarity, honesty, and timeliness of communication with team, management, and clients." },
+    { "key": "PS", "name": "Problem-Solving", "description": "Practical judgment under ambiguity, prioritization, and quality of proposed solutions, at both hands-on and managerial scale." },
+    { "key": "DR", "name": "Dispute Resolution", "description": "Handling disagreements between people/disciplines constructively rather than avoiding or escalating destructively." },
+    { "key": "OM", "name": "Organizational Mindset", "description": "Thinking beyond one's own task to the studio's broader process, resourcing, and client-relationship interests." },
+    { "key": "ET", "name": "Ethics & Integrity", "description": "Honesty in reporting (esp. timesheets/billing), transparency about errors, resistance to pressure to misreport." }
+  ],
+  "notes": "All 7 dimensions are scored via situational-judgment options only (no objective/technical MCQ section in this version — technical/software skill is assessed in a separate test and the Personal Interview). Every option carries a trait_deltas vector rather than a single 'correct' answer, reflecting that reasonable people weigh trade-offs differently. Certain options are additionally tagged flag: 'ethics_concern' — selecting one of these surfaces the response for manual reviewer attention regardless of overall score, independent of which topic the question is primarily about (an ethics_concern flag can appear on a Problem-Solving or Organizational Mindset question too, not only on the 2 dedicated Ethics questions per test — this widens the net for catching integrity issues beyond the small ET question quota). Each question also carries a 'topic' field for readability/reporting; scoring itself still runs off trait_deltas dynamically, not the topic label."
+}

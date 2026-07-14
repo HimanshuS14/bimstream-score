@@ -1,0 +1,318 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   BIMstream SCORE — design tokens
+   A small Material Design 3–inspired token set: a refined neutral palette,
+   one accent color (Google-blue-esque, used sparingly for primary actions,
+   links, and focus rings), layered elevation shadows, a consistent radius
+   scale, and an 8px spacing rhythm (via Tailwind's default spacing scale).
+   --------------------------------------------------------------------------- */
+:root {
+  /* Neutral surface palette */
+  --md-bg: #f6f8fb;
+  --md-surface: #ffffff;
+  --md-surface-variant: #f1f3f6;
+  --md-outline: #dde1e6;
+  --md-outline-variant: #e8eaed;
+
+  /* Text */
+  --md-on-surface: #1b1f24;
+  --md-on-surface-variant: #5f6368;
+  --md-on-surface-muted: #80868b;
+
+  /* Accent (single accent color, used sparingly) */
+  --md-primary: #1a73e8;
+  --md-primary-hover: #1765cc;
+  --md-primary-active: #185abc;
+  --md-primary-container: #e8f0fe;
+  --md-on-primary: #ffffff;
+  --md-on-primary-container: #0b3d91;
+
+  /* Semantic colors */
+  --md-success: #188038;
+  --md-success-container: #e6f4ea;
+  --md-on-success-container: #0d652d;
+  --md-warning: #b06000;
+  --md-warning-container: #fef7e0;
+  --md-on-warning-container: #7a4a00;
+  --md-error: #c5221f;
+  --md-error-container: #fce8e6;
+  --md-on-error-container: #8c1d18;
+
+  /* Radius scale */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* Elevation (layered shadows, not a flat drop-shadow) */
+  --elevation-0: 0 0 0 1px var(--md-outline-variant);
+  --elevation-1: 0 1px 2px 0 rgba(32, 33, 36, 0.06), 0 1px 3px 1px rgba(32, 33, 36, 0.08);
+  --elevation-2: 0 1px 2px 0 rgba(32, 33, 36, 0.08), 0 2px 6px 2px rgba(32, 33, 36, 0.1);
+  --elevation-3: 0 4px 8px 3px rgba(32, 33, 36, 0.1), 0 1px 3px 0 rgba(32, 33, 36, 0.16);
+
+  /* Fonts: next/font/google (Inter) is wired up in app/layout.tsx and exposes
+     --font-sans when it can reach Google Fonts at build time (e.g. on
+     Vercel). We fall back to a carefully tuned system stack so the app still
+     looks refined if that font file isn't available (see README). */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+
+  /* Brand wordmark font: the "BIMstream" text in components/Logo.tsx (bold
+     "BIM" + medium "stream") is real HTML text, not baked into an SVG, so it
+     can inherit `currentColor` and work on dark headers too. It's styled
+     with Poppins - the closest widely-available Google Font to the real
+     logo's geometric sans - wired up the same way as --font-sans above
+     (next/font/google in app/layout.tsx, commented out by default; see
+     README). Falls back to a geometric-sans system stack when Poppins isn't
+     available. */
+  --font-brand: "Poppins", "Century Gothic", "Futura", -apple-system, "Segoe UI", sans-serif;
+
+  --background: var(--md-bg);
+  --foreground: var(--md-on-surface);
+}
+
+@theme inline {
+  --color-primary: var(--md-primary);
+  --color-primary-hover: var(--md-primary-hover);
+  --color-primary-container: var(--md-primary-container);
+  --color-on-primary: var(--md-on-primary);
+  --color-surface: var(--md-surface);
+  --color-surface-variant: var(--md-surface-variant);
+  --color-outline: var(--md-outline);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+}
+
+* {
+  border-color: var(--md-outline-variant);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  letter-spacing: -0.006em;
+  line-height: 1.5;
+}
+
+::selection {
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+
+a {
+  color: var(--md-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--md-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------------------------------------------------------------------
+   Elevation utility classes
+   --------------------------------------------------------------------------- */
+.elevation-0 { box-shadow: var(--elevation-0); }
+.elevation-1 { box-shadow: var(--elevation-1); }
+.elevation-2 { box-shadow: var(--elevation-2); }
+.elevation-3 { box-shadow: var(--elevation-3); }
+
+/* ---------------------------------------------------------------------------
+   Surface card
+   --------------------------------------------------------------------------- */
+.surface-card {
+  background: var(--md-surface);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elevation-1);
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-full);
+  padding: 0.625rem 1.5rem;
+  transition: background-color 150ms ease, box-shadow 150ms ease, color 150ms ease,
+    border-color 150ms ease, transform 100ms ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.btn:active:not(:disabled) {
+  transform: translateY(0.5px);
+}
+
+.btn-primary {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  box-shadow: var(--elevation-1);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--md-primary-hover);
+  box-shadow: var(--elevation-2);
+}
+.btn-primary:active:not(:disabled) {
+  background: var(--md-primary-active);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--md-primary);
+  border: 1px solid var(--md-outline);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--md-primary-container);
+  border-color: var(--md-primary);
+}
+
+.btn-text {
+  background: transparent;
+  color: var(--md-on-surface-variant);
+  padding: 0.5rem 0.875rem;
+}
+.btn-text:hover:not(:disabled) {
+  background: var(--md-surface-variant);
+  color: var(--md-on-surface);
+}
+
+/* ---------------------------------------------------------------------------
+   Inputs
+   --------------------------------------------------------------------------- */
+.field-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--md-on-surface-variant);
+  margin-bottom: 0.375rem;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--md-outline);
+  background: var(--md-surface);
+  border-radius: var(--radius-sm);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--md-on-surface);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.input:hover {
+  border-color: #b8bcc2;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--md-primary);
+  box-shadow: 0 0 0 3px var(--md-primary-container);
+}
+.input::placeholder {
+  color: var(--md-on-surface-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Selectable option "cards" — replaces bare browser radio buttons for the
+   SJT question options. Better UX for a 30-question test: a bigger, clearer
+   hit target than a tiny radio dot, with an explicit selected state.
+   --------------------------------------------------------------------------- */
+.option-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border: 1.5px solid var(--md-outline);
+  background: var(--md-surface);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+.option-card:hover {
+  border-color: var(--md-primary);
+  background: var(--md-primary-container);
+}
+.option-card.is-selected {
+  border-color: var(--md-primary);
+  background: var(--md-primary-container);
+  box-shadow: var(--elevation-1);
+}
+
+.option-radio-dot {
+  flex: none;
+  margin-top: 0.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--md-outline);
+  display: grid;
+  place-items: center;
+  transition: border-color 150ms ease;
+}
+.option-card.is-selected .option-radio-dot {
+  border-color: var(--md-primary);
+  border-width: 5px;
+}
+
+/* ---------------------------------------------------------------------------
+   Progress bar
+   --------------------------------------------------------------------------- */
+.progress-track {
+  background: var(--md-surface-variant);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  height: 0.5rem;
+  width: 100%;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--md-primary);
+  transition: width 300ms ease;
+}
+
+/* ---------------------------------------------------------------------------
+   Badges (recommendation bands, ethics flags, status pills)
+   --------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.badge-success { background: var(--md-success-container); color: var(--md-on-success-container); }
+.badge-warning { background: var(--md-warning-container); color: var(--md-on-warning-container); }
+.badge-error { background: var(--md-error-container); color: var(--md-on-error-container); }
+.badge-neutral { background: var(--md-surface-variant); color: var(--md-on-surface-variant); }
+.badge-primary { background: var(--md-primary-container); color: var(--md-on-primary-container); }
+
+/* Flagged table rows — a distinct, unmissable treatment for ethics-flag rows */
+.row-flagged {
+  background: var(--md-error-container);
+}
+.row-flagged:hover {
+  background: #f9d6d3;
+}

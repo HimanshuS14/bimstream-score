@@ -1,0 +1,348 @@
+{
+  "testId": "modeler",
+  "program": "BIMstream SCORE",
+  "programFullName": "Situational Competency & Organizational Readiness Evaluation",
+  "title": "SCORE — Modeler / Senior Modeler Assessment",
+  "durationMinutes": 30,
+  "audience": "BIM Modelers and Senior Modelers",
+  "description": "Purely HR/behavioral instrument, 30 questions at ~60 seconds each. Technical/software skill is assessed separately (technical test + Personal Interview), so this test carries no technical items at all. Weighted for an individual-contributor role: Team Play, Communication, and Problem-Solving get the most questions; Leadership is present at a lighter weight to spot early potential; Dispute Resolution, Organizational Mindset, and Ethics carry small dedicated quotas but ethics-concern flags can surface on any question, not just the dedicated ones.",
+  "topicWeights": { "TP": 7, "CM": 6, "PS": 6, "LD": 4, "DR": 3, "OM": 2, "ET": 2 },
+  "sections": [
+    {
+      "type": "situational_judgment",
+      "instructions": "Choose the option that best reflects how you would actually act. There is no single 'correct' answer — pick the one truest to your instinct.",
+      "questions": [
+        {
+          "id": "M-TP-01",
+          "topic": "TP",
+          "prompt": "A new teammate joins mid-project, unfamiliar with your studio's model standards, while you're on a tight deadline yourself. What do you do?",
+          "options": [
+            { "text": "Point them to the standards doc and let them figure it out — you don't have time.", "trait_deltas": { "TP": -2, "CM": -1 } },
+            { "text": "Take 15-20 minutes to walk them through the essentials now, then check in with them later.", "trait_deltas": { "TP": 2, "CM": 1, "LD": 1 } },
+            { "text": "Ask someone else on the team to onboard them instead.", "trait_deltas": { "TP": -1 } },
+            { "text": "Ignore them until they ask you directly for help.", "trait_deltas": { "TP": -2, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-TP-02",
+          "topic": "TP",
+          "prompt": "A colleague on another discipline's team is overloaded and asks for informal help outside your assigned tasks. What do you do?",
+          "options": [
+            { "text": "Decline — it's not your task list.", "trait_deltas": { "TP": -1 } },
+            { "text": "Help without limit even if it seriously risks your own deadline, without telling anyone.", "trait_deltas": { "TP": 1, "PS": -1, "CM": -1 } },
+            { "text": "Offer specific, bounded help and let your own lead know about the trade-off.", "trait_deltas": { "TP": 2, "CM": 2, "LD": 1 } },
+            { "text": "Offer to help 'later' without committing to anything concrete.", "trait_deltas": { "TP": -1, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-TP-03",
+          "topic": "TP",
+          "prompt": "In a team meeting, credit for a successful clash-resolution effort gets attributed mostly to someone who did less of the actual work. What do you do?",
+          "options": [
+            { "text": "Say nothing — it's not worth the awkwardness.", "trait_deltas": { "TP": -1, "CM": -1 } },
+            { "text": "Correct the record on the spot, emphasizing your own contribution assertively.", "trait_deltas": { "TP": -1, "CM": -1, "DR": -1 } },
+            { "text": "Mention the fuller picture calmly and factually, crediting everyone who contributed, including yourself.", "trait_deltas": { "TP": 2, "CM": 2 } },
+            { "text": "Complain about it privately to other teammates afterward.", "trait_deltas": { "TP": -2, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-TP-04",
+          "topic": "TP",
+          "prompt": "You notice a teammate quietly struggling, and their slipping work is starting to threaten the team's shared deadline. What do you do?",
+          "options": [
+            { "text": "Focus only on your own tasks — it's their responsibility.", "trait_deltas": { "TP": -2, "LD": -1 } },
+            { "text": "Report their struggling to your manager immediately without talking to them first.", "trait_deltas": { "TP": -1, "CM": -1 } },
+            { "text": "Check in with them directly and privately, understand what's going on, and offer specific support.", "trait_deltas": { "TP": 2, "CM": 2, "LD": 1 } },
+            { "text": "Quietly pick up their slack yourself without saying anything to them or anyone else.", "trait_deltas": { "TP": 0, "PS": -1, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-TP-05",
+          "topic": "TP",
+          "prompt": "Your project wins client praise, but a teammate who contributed less publicly claims most of the credit in front of others. What's your reaction?",
+          "options": [
+            { "text": "Publicly dispute their claim in the moment.", "trait_deltas": { "TP": -1, "DR": -1, "CM": -1 } },
+            { "text": "Let it go completely and never mention it, even though it bothers you.", "trait_deltas": { "TP": 0, "CM": -1 } },
+            { "text": "Calmly and factually acknowledge the full team's contribution afterward, including your own, without making it confrontational.", "trait_deltas": { "TP": 2, "CM": 2 } },
+            { "text": "Start doing the same thing yourself in future 'to even the score.'", "trait_deltas": { "TP": -2, "ET": -1 } }
+          ]
+        },
+        {
+          "id": "M-TP-06",
+          "topic": "TP",
+          "prompt": "Helping another discipline hit their deadline would require you to slightly adjust your own schedule, at some real cost to you. What's your approach?",
+          "options": [
+            { "text": "Refuse, since it's not your deadline to worry about.", "trait_deltas": { "TP": -2 } },
+            { "text": "Agree without asking any questions or flagging the cost to your own schedule.", "trait_deltas": { "TP": 1, "PS": -1, "CM": -1 } },
+            { "text": "Discuss the trade-off honestly with your lead and the other discipline, then agree to a workable compromise.", "trait_deltas": { "TP": 2, "CM": 2, "PS": 1 } },
+            { "text": "Agree reluctantly and let your resentment show throughout the interaction.", "trait_deltas": { "TP": -1, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-TP-07",
+          "topic": "TP",
+          "prompt": "You disagree with a decision your team made collectively in a meeting you weren't part of. What do you do?",
+          "options": [
+            { "text": "Ignore the decision and do it your way anyway.", "trait_deltas": { "TP": -2, "CM": -1 } },
+            { "text": "Comply outwardly but complain about it to others behind the scenes.", "trait_deltas": { "TP": -1, "CM": -1 } },
+            { "text": "Raise your concern constructively with the team or decision-maker, then support the decision once discussed.", "trait_deltas": { "TP": 2, "CM": 2, "LD": 1 } },
+            { "text": "Go along with it without ever voicing your view, even in the moment.", "trait_deltas": { "TP": 0, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-CM-01",
+          "topic": "CM",
+          "prompt": "You need to explain a complex clash issue to non-technical stakeholders (e.g. the client's facilities team) who don't understand BIM jargon. What's your approach?",
+          "options": [
+            { "text": "Use full technical terminology since it's the most precise.", "trait_deltas": { "CM": -2 } },
+            { "text": "Simplify heavily, using analogies and avoiding jargon, checking they understood before moving on.", "trait_deltas": { "CM": 2, "PS": 1 } },
+            { "text": "Let a colleague handle the explanation instead.", "trait_deltas": { "CM": -1 } },
+            { "text": "Give a quick technical summary and move on regardless of whether they followed.", "trait_deltas": { "CM": -2 } }
+          ]
+        },
+        {
+          "id": "M-CM-02",
+          "topic": "CM",
+          "prompt": "An important coordination decision was made verbally in a meeting. What do you do to make sure nothing gets lost?",
+          "options": [
+            { "text": "Assume everyone remembers and skip writing it down.", "trait_deltas": { "CM": -2, "PS": -1 } },
+            { "text": "Write a brief but clear summary and share it with everyone involved right after the meeting.", "trait_deltas": { "CM": 2, "PS": 1 } },
+            { "text": "Write detailed notes only for your own records, not shared with others.", "trait_deltas": { "CM": -1 } },
+            { "text": "Wait for someone else to write meeting minutes.", "trait_deltas": { "CM": -1, "LD": -1 } }
+          ]
+        },
+        {
+          "id": "M-CM-03",
+          "topic": "CM",
+          "prompt": "A teammate's message about a coordination issue is unclear and could mean two very different things. What do you do?",
+          "options": [
+            { "text": "Guess at the intended meaning and proceed.", "trait_deltas": { "CM": -2, "PS": -1 } },
+            { "text": "Ask a clarifying question immediately before proceeding.", "trait_deltas": { "CM": 2, "PS": 1 } },
+            { "text": "Proceed with the interpretation that's easiest for you, regardless of likely intent.", "trait_deltas": { "CM": -2, "ET": -1 } },
+            { "text": "Ignore the message until they follow up.", "trait_deltas": { "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-CM-04",
+          "topic": "CM",
+          "prompt": "Partway through a task, you realize the brief you were given was ambiguous and you've made an assumption that might be wrong. What do you do?",
+          "options": [
+            { "text": "Keep going and hope your assumption was right.", "trait_deltas": { "CM": -2, "PS": -1 } },
+            { "text": "Reach out early to confirm your assumption before investing more time.", "trait_deltas": { "CM": 2, "PS": 2 } },
+            { "text": "Finish the task your way and mention the ambiguity only if someone asks.", "trait_deltas": { "CM": -1, "PS": -1 } },
+            { "text": "Redo the task multiple ways to cover all interpretations, without asking anyone.", "trait_deltas": { "CM": -1, "PS": -1 } }
+          ]
+        },
+        {
+          "id": "M-CM-05",
+          "topic": "CM",
+          "prompt": "A client questions why a deliverable took longer than the timesheet estimate implied. What's the best response?",
+          "options": [
+            { "text": "Say it was due to 'technical issues' without further detail.", "trait_deltas": { "CM": -1 } },
+            { "text": "Give a clear, honest breakdown of what the extra time involved and why, framed constructively.", "trait_deltas": { "CM": 2, "ET": 2, "PS": 1 } },
+            { "text": "Attribute the delay to a teammate.", "trait_deltas": { "CM": -2, "ET": -1, "DR": -2 } },
+            { "text": "Avoid answering directly and change the subject.", "trait_deltas": { "CM": -2, "ET": -1 } }
+          ]
+        },
+        {
+          "id": "M-CM-06",
+          "topic": "CM",
+          "prompt": "Your manager's instructions for a task conflict with what the client previously told you directly. What do you do?",
+          "options": [
+            { "text": "Follow your manager's instructions without mentioning the conflict.", "trait_deltas": { "CM": -2, "PS": -1 } },
+            { "text": "Follow the client's version without mentioning the conflict to your manager.", "trait_deltas": { "CM": -2, "PS": -1 } },
+            { "text": "Point out the discrepancy to your manager promptly so it can be clarified before proceeding.", "trait_deltas": { "CM": 2, "PS": 2 } },
+            { "text": "Pick whichever seems easier to execute technically.", "trait_deltas": { "CM": -2, "PS": -1 } }
+          ]
+        },
+        {
+          "id": "M-PS-01",
+          "topic": "PS",
+          "prompt": "Two disciplines' models disagree on a critical dimension by 200mm, discovered the day before an issue-for-construction deadline. What's your first move?",
+          "options": [
+            { "text": "Pick whichever number looks right and proceed.", "trait_deltas": { "PS": -2, "ET": -1 } },
+            { "text": "Escalate immediately with both models/screenshots to your lead, flagging it as blocking until jointly resolved.", "trait_deltas": { "PS": 2, "CM": 2, "LD": 1 } },
+            { "text": "Issue the set anyway with a note about the discrepancy.", "trait_deltas": { "PS": -1, "ET": -1 } },
+            { "text": "Wait to see if someone else notices it first.", "trait_deltas": { "PS": -2, "LD": -2, "CM": -2 } }
+          ]
+        },
+        {
+          "id": "M-PS-02",
+          "topic": "PS",
+          "prompt": "You realize you misjudged the time a modeling task would take and are now behind, with the deadline in two days. What do you do?",
+          "options": [
+            { "text": "Say nothing and work faster, skipping some QA checks to catch up.", "trait_deltas": { "PS": -1, "ET": -1, "CM": -1 } },
+            { "text": "Inform your lead early with a realistic revised estimate, and ask about reprioritizing scope or support.", "trait_deltas": { "PS": 2, "CM": 2, "ET": 1, "LD": 1 } },
+            { "text": "Wait until the deadline to explain what happened.", "trait_deltas": { "CM": -2, "ET": -1, "PS": -1 } },
+            { "text": "Attribute the slip mainly to an unclear brief at the start.", "trait_deltas": { "CM": -1, "ET": -1, "LD": -1 } }
+          ]
+        },
+        {
+          "id": "M-PS-03",
+          "topic": "PS",
+          "prompt": "A software malfunction during a critical work session right before a deadline costs you an hour of unsaved work. What do you do?",
+          "options": [
+            { "text": "Panic and immediately tell everyone the deadline is impossible.", "trait_deltas": { "PS": -2, "CM": -1 } },
+            { "text": "Quickly assess what's actually lost, try alternate recovery options, and give a realistic revised estimate to your lead.", "trait_deltas": { "PS": 2, "CM": 1, "LD": 1 } },
+            { "text": "Try to silently redo the work without adjusting the estimate or informing anyone.", "trait_deltas": { "PS": -1, "CM": -1 } },
+            { "text": "Blame the software publicly and wait for instructions.", "trait_deltas": { "PS": -1, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-PS-04",
+          "topic": "PS",
+          "prompt": "You're given conflicting information from two sources about a critical requirement (e.g. ceiling height) for the same space. What's your approach?",
+          "options": [
+            { "text": "Pick the source that's more convenient for your existing work.", "trait_deltas": { "PS": -2, "ET": -1 } },
+            { "text": "Cross-check both sources against the master documents/BEP and escalate if still unresolved.", "trait_deltas": { "PS": 2, "CM": 1 } },
+            { "text": "Use whichever number was given most recently, regardless of source reliability.", "trait_deltas": { "PS": -1 } },
+            { "text": "Proceed with an average of the two numbers without verifying either.", "trait_deltas": { "PS": -2 } }
+          ]
+        },
+        {
+          "id": "M-PS-05",
+          "topic": "PS",
+          "prompt": "A task turns out to be more complex than expected, and you're not sure of the best technical approach. What do you do?",
+          "options": [
+            { "text": "Guess and hope it works out.", "trait_deltas": { "PS": -2 } },
+            { "text": "Research standard approaches, and if still unsure, ask a more experienced colleague before committing significant time.", "trait_deltas": { "PS": 2, "TP": 1, "CM": 1 } },
+            { "text": "Pick the first approach that comes to mind and stick with it regardless of new information.", "trait_deltas": { "PS": -1 } },
+            { "text": "Avoid the task and hope someone else picks it up.", "trait_deltas": { "PS": -2, "LD": -1 } }
+          ]
+        },
+        {
+          "id": "M-PS-06",
+          "topic": "PS",
+          "prompt": "You're assigned a task with insufficient information to complete it accurately, and the person who could clarify is unavailable for a day. The deadline is tomorrow. What do you do?",
+          "options": [
+            { "text": "Guess and proceed with your best assumption, telling no one.", "trait_deltas": { "PS": -2, "CM": -1 } },
+            { "text": "Make a reasonable, clearly-documented assumption, proceed cautiously on lower-risk parts first, and flag the exact open question as soon as the person is available.", "trait_deltas": { "PS": 2, "CM": 2 } },
+            { "text": "Stop all work on the task until the person is available.", "trait_deltas": { "PS": -1, "LD": -1 } },
+            { "text": "Ask a random colleague who also doesn't know the answer and treat their guess as fact.", "trait_deltas": { "PS": -1 } }
+          ]
+        },
+        {
+          "id": "M-LD-01",
+          "topic": "LD",
+          "prompt": "A newer teammate keeps making the same mistake, creating rework for you. Even though you're not their manager, what do you do?",
+          "options": [
+            { "text": "Redo their work yourself each time to avoid confrontation.", "trait_deltas": { "LD": -1, "TP": -1 } },
+            { "text": "Report it directly to management asking for them to be reprimanded.", "trait_deltas": { "LD": 0, "CM": -1, "DR": -1 } },
+            { "text": "Sit with them, explain the correct method, and check their next few submissions before escalating further.", "trait_deltas": { "LD": 2, "CM": 2, "TP": 1 } },
+            { "text": "Point out the mistake publicly in the coordination meeting so others are aware.", "trait_deltas": { "LD": -1, "CM": -2 } }
+          ]
+        },
+        {
+          "id": "M-LD-02",
+          "topic": "LD",
+          "prompt": "During a chaotic coordination crunch, no one has clearly taken charge of triaging what to fix first. What do you do, even without formal authority?",
+          "options": [
+            { "text": "Wait for someone senior to take charge.", "trait_deltas": { "LD": -2 } },
+            { "text": "Step in to suggest a simple triage/priority order for the group to align around, without waiting to be asked.", "trait_deltas": { "LD": 2, "PS": 1, "CM": 1 } },
+            { "text": "Focus only on your own piece and let the group figure out priorities.", "trait_deltas": { "LD": -1 } },
+            { "text": "Take over the whole thing yourself without checking with anyone.", "trait_deltas": { "LD": -1, "TP": -1 } }
+          ]
+        },
+        {
+          "id": "M-LD-03",
+          "topic": "LD",
+          "prompt": "You disagree with a modeling standard your studio uses and believe your own method is better. What do you do?",
+          "options": [
+            { "text": "Quietly use your own method since you're confident it's better.", "trait_deltas": { "LD": -1, "CM": -1 } },
+            { "text": "Raise it with your lead/BIM manager with reasoning and evidence, following the current standard while it's discussed.", "trait_deltas": { "LD": 2, "CM": 2, "PS": 1 } },
+            { "text": "Complain to colleagues that the standard is outdated.", "trait_deltas": { "LD": -1, "CM": -2 } },
+            { "text": "Follow the standard without ever raising the concern.", "trait_deltas": { "LD": -1 } }
+          ]
+        },
+        {
+          "id": "M-LD-04",
+          "topic": "LD",
+          "prompt": "A junior colleague asks you, an experienced modeler, whether they're ready to take on more responsibility. What do you do?",
+          "options": [
+            { "text": "Give a quick generic answer and move on.", "trait_deltas": { "LD": -1, "CM": -1 } },
+            { "text": "Take the time to give specific, honest feedback based on what you've actually observed of their work, and encourage a concrete next step.", "trait_deltas": { "LD": 2, "CM": 2, "TP": 1 } },
+            { "text": "Tell them to ask their manager instead.", "trait_deltas": { "LD": -1 } },
+            { "text": "Avoid giving an honest answer to spare their feelings.", "trait_deltas": { "LD": -1, "CM": -1, "ET": -1 } }
+          ]
+        },
+        {
+          "id": "M-DR-01",
+          "topic": "DR",
+          "prompt": "In a coordination meeting, a structural engineer insists a beam position is fixed and MEP must reroute around it — even though that reroute would violate minimum ceiling clearance required by code. What do you do?",
+          "options": [
+            { "text": "Agree immediately to avoid conflict and reroute despite the code issue.", "trait_deltas": { "PS": -1, "ET": -1, "DR": -1 } },
+            { "text": "Push back forcefully insisting structural must move the beam, without proposing alternatives.", "trait_deltas": { "DR": -1, "CM": -1 } },
+            { "text": "Clearly flag the code conflict with technical justification and propose 2-3 alternatives for the group to evaluate together.", "trait_deltas": { "PS": 2, "CM": 2, "DR": 2, "LD": 1 } },
+            { "text": "Stay quiet in the meeting but raise the concern privately with your manager afterward.", "trait_deltas": { "PS": 0, "CM": -1, "DR": -1, "LD": -1 } }
+          ]
+        },
+        {
+          "id": "M-DR-02",
+          "topic": "DR",
+          "prompt": "During a late-night coordination call under deadline pressure, a colleague is visibly stressed and starts snapping at others. What do you do?",
+          "options": [
+            { "text": "Ignore it — not your problem.", "trait_deltas": { "CM": -1, "DR": -1 } },
+            { "text": "Snap back to defend the person being criticized.", "trait_deltas": { "CM": -1, "DR": -1 } },
+            { "text": "Acknowledge the stress calmly, refocus on the specific issue, and suggest a short break if needed.", "trait_deltas": { "CM": 2, "DR": 2, "LD": 1 } },
+            { "text": "Report the colleague's behavior to management right after the call without addressing it in the moment.", "trait_deltas": { "CM": -1, "DR": -1 } }
+          ]
+        },
+        {
+          "id": "M-DR-03",
+          "topic": "DR",
+          "prompt": "Two teammates on your project openly disagree about the right modeling approach in front of you and ask you to weigh in. What do you do?",
+          "options": [
+            { "text": "Avoid taking a side to stay neutral, even if one is clearly more correct.", "trait_deltas": { "DR": -1, "PS": -1 } },
+            { "text": "Give your honest technical opinion based on the merits, while being respectful of both people's perspectives.", "trait_deltas": { "DR": 2, "CM": 2, "PS": 1 } },
+            { "text": "Side with whichever one is more senior, regardless of the merits.", "trait_deltas": { "DR": -2 } },
+            { "text": "Escalate it immediately without offering your own view first.", "trait_deltas": { "DR": -1 } }
+          ]
+        },
+        {
+          "id": "M-OM-01",
+          "topic": "OM",
+          "prompt": "A recurring coordination issue keeps causing delays across multiple projects, not just yours. What's the best individual response as a modeler (not yet a manager)?",
+          "options": [
+            { "text": "Keep solving it manually every time it comes up on your own projects.", "trait_deltas": { "OM": -1, "PS": 0 } },
+            { "text": "Document the recurring pattern and its impact, and proactively suggest it to your lead as a process issue worth fixing at the source.", "trait_deltas": { "OM": 2, "PS": 2, "CM": 1 } },
+            { "text": "Assume it's someone else's job to notice and say nothing.", "trait_deltas": { "OM": -1, "PS": -1 } },
+            { "text": "Complain about it informally without ever raising it formally.", "trait_deltas": { "OM": -1, "CM": -1 } }
+          ]
+        },
+        {
+          "id": "M-OM-02",
+          "topic": "OM",
+          "prompt": "Your studio is under resourcing pressure across several projects at once, and you finish your own task early. What do you do?",
+          "options": [
+            { "text": "Consider your job done and wait for your next assigned task.", "trait_deltas": { "OM": -1 } },
+            { "text": "Proactively check with your lead whether another project or teammate needs help, given the studio-wide crunch.", "trait_deltas": { "OM": 2, "TP": 1, "LD": 1 } },
+            { "text": "Use the spare time entirely for personal tasks without telling anyone.", "trait_deltas": { "OM": -2 } },
+            { "text": "Wait to be told what to do next without asking.", "trait_deltas": { "OM": -1 } }
+          ]
+        },
+        {
+          "id": "M-ET-01",
+          "topic": "ET",
+          "prompt": "At 6pm you discover an error in the shared central model that will affect three other disciplines' work if not fixed tonight. Fixing it means at least 2 unplanned overtime hours. What do you do?",
+          "options": [
+            { "text": "Log off and mention it in tomorrow's meeting since you weren't asked to stay late.", "trait_deltas": { "PS": -1, "CM": -1, "LD": -1 } },
+            { "text": "Fix it tonight yourself, but don't log the extra hours so it doesn't look like you're padding your timesheet.", "trait_deltas": { "PS": 1, "CM": -2, "ET": -2 }, "flag": "ethics_concern" },
+            { "text": "Notify your coordinator immediately about the issue and its downstream impact, offer to fix it tonight, and log the actual time honestly.", "trait_deltas": { "PS": 2, "CM": 2, "ET": 2, "LD": 1 } },
+            { "text": "Fix it tonight but don't mention it unless someone asks.", "trait_deltas": { "PS": 1, "CM": -1, "ET": -1 } }
+          ]
+        },
+        {
+          "id": "M-ET-02",
+          "topic": "ET",
+          "prompt": "Your manager asks you to sign off on a coordination model as 'clash-free,' but you know a few unresolved clashes remain in a low-visibility area. What do you do?",
+          "options": [
+            { "text": "Sign off since your manager asked.", "trait_deltas": { "ET": -2 }, "flag": "ethics_concern" },
+            { "text": "Decline to sign off and clearly document the remaining clashes and their risk before any decision is made.", "trait_deltas": { "ET": 2, "CM": 2, "LD": 1 } },
+            { "text": "Sign off but quietly tell a colleague about the unresolved clashes.", "trait_deltas": { "ET": -1, "CM": -1 }, "flag": "ethics_concern" },
+            { "text": "Delay responding and hope someone else handles it.", "trait_deltas": { "ET": -1, "LD": -1 } }
+          ]
+        }
+      ]
+    }
+  ]
+}
