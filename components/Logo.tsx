@@ -4,15 +4,12 @@ import Link from "next/link";
 // `variant="full"` (icon + "BIMstream" wordmark) for most header contexts,
 // `variant="mark"` (icon only) where space is tight (e.g. compact nav bars).
 //
-// The icon is `public/logo-mark.svg` (a hexagon construction matching the
-// real BIMstream mark). The "BIMstream" wordmark is *not* baked into that
-// SVG - it's rendered as real HTML/CSS text below, styled with the
-// `--font-brand` custom property (Poppins, falling back to a geometric-sans
-// system stack - see globals.css / README "Design system") and
-// `color: currentColor`, so it renders crisply at any size, adapts to
-// light *and* dark backgrounds, and never depends on a font being embedded
-// in an SVG.
-const MARK_ASPECT = 600 / 520; // matches public/logo-mark.svg's viewBox
+// Both variants render the studio's actual transparent brand PNGs directly
+// (public/bimstream-full.png and public/bimstream-mark.png) rather than a
+// hand-reconstructed SVG approximation - this is the real logo file supplied
+// by BIMstream, used as-is.
+const FULL_ASPECT = 4.96875; // bimstream-full.png: 1113x224
+const MARK_ASPECT = 1; // bimstream-mark.png: square (512x512)
 
 export default function Logo({
   variant = "full",
@@ -25,16 +22,15 @@ export default function Logo({
   className?: string;
   height?: number;
 }) {
-  const markWidth = Math.round(height * MARK_ASPECT);
-
   if (variant === "mark") {
+    const width = Math.round(height * MARK_ASPECT);
     const mark = (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src="/logo-mark.svg"
+        src="/bimstream-mark.png"
         alt="BIMstream"
         height={height}
-        width={markWidth}
+        width={width}
         style={{ height, width: "auto" }}
         className={className}
       />
@@ -49,30 +45,17 @@ export default function Logo({
     );
   }
 
+  const width = Math.round(height * FULL_ASPECT);
   const content = (
-    <span className={`inline-flex items-center gap-2 ${className}`}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/logo-mark.svg"
-        alt=""
-        aria-hidden="true"
-        height={height}
-        width={markWidth}
-        style={{ height, width: "auto" }}
-        className="flex-none"
-      />
-      <span
-        className="leading-none tracking-tight whitespace-nowrap"
-        style={{
-          fontFamily: "var(--font-brand)",
-          fontSize: Math.round(height * 0.62),
-          color: "currentColor",
-        }}
-      >
-        <span className="font-bold">BIM</span>
-        <span className="font-medium">stream</span>
-      </span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/bimstream-full.png"
+      alt="BIMstream"
+      height={height}
+      width={width}
+      style={{ height, width: "auto" }}
+      className={className}
+    />
   );
 
   if (!href) return content;
