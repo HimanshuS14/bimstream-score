@@ -1,5 +1,6 @@
 "use server";
 
+import { randomUUID } from "crypto";
 import { createSupabaseAnonClient } from "@/lib/supabase/anon";
 import { createSupabaseServiceClient } from "@/lib/supabase/service";
 import { scoreSubmission } from "@/lib/scoring";
@@ -43,36 +44,37 @@ export async function startSession(
 
   const supabase = createSupabaseAnonClient();
 
-  const { data: candidate, error: candidateError } = await supabase
-    .from("candidates")
-    .insert({
-      name: trimmedName,
-      email: trimmedEmail,
-      target_role: targetRole || testId,
-    })
-    .select("id")
-    .single();
+  // IDs are generated here (not read back via RETURNING/`.select()`) on purpose:
+  // the anon key is only ever granted INSERT on candidates/sessions, never
+  // SELECT, so candidate data can't be listed via the public API. Requesting
+  // the row back after insert would require SELECT privilege we deliberately
+  // don't grant, so we mint the UUIDs client-side and insert them explicitly.
+  const candidateId = randomUUID();
+  const { error: candidateError } = await supabase.from("candidates").insert({
+    id: candidateId,
+    name: trimmedName,
+    email: trimmedEmail,
+    target_role: targetRole || testId,
+  });
 
-  if (candidateError || !candidate) {
-    return { ok: false, error: candidateError?.message ?? "Could not create candidate." };
+  if (candidateError) {
+    return { ok: false, error: candidateError.message };
   }
 
-  const { data: session, error: sessionError } = await supabase
-    .from("sessions")
-    .insert({
-      candidate_id: candidate.id,
-      test_id: testId,
-      status: "in_progress",
-      answers: [],
-    })
-    .select("id")
-    .single();
+  const sessionId = randomUUID();
+  const { error: sessionError } = await supabase.from("sessions").insert({
+    id: sessionId,
+    candidate_id: candidateId,
+    test_id: testId,
+    status: "in_progress",
+    answers: [],
+  });
 
-  if (sessionError || !session) {
-    return { ok: false, error: sessionError?.message ?? "Could not create session." };
+  if (sessionError) {
+    return { ok: false, error: sessionError.message };
   }
 
-  return { ok: true, sessionId: session.id, candidateId: candidate.id };
+  return { ok: true, sessionId, candidateId };
 }
 
 export interface SubmitSessionResult {
