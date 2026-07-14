@@ -5,9 +5,16 @@ import Link from "next/link";
 // `variant="mark"` (icon only) where space is tight (e.g. compact nav bars).
 //
 // Both variants render the studio's actual transparent brand PNGs directly
-// (public/bimstream-full.png and public/bimstream-mark.png) rather than a
-// hand-reconstructed SVG approximation - this is the real logo file supplied
-// by BIMstream, used as-is.
+// (public/bimstream-full.png / bimstream-mark.png, or the white variants
+// on dark surfaces) rather than a hand-reconstructed SVG approximation -
+// this is the real logo file supplied by BIMstream, used as-is.
+//
+// `onDark` switches to the pre-generated white-recolored PNGs (same line art,
+// alpha-preserved, RGB forced to white) for use on the dark navy hero
+// surfaces (homepage hero, admin login left panel) - the source PNGs are
+// black-only raster art, so `currentColor` doesn't apply to them the way it
+// does to the (real HTML/CSS) wordmark text in some earlier iterations of
+// this component; swapping the whole asset is the reliable approach.
 const FULL_ASPECT = 4.96875; // bimstream-full.png: 1113x224
 const MARK_ASPECT = 1; // bimstream-mark.png: square (512x512)
 
@@ -16,18 +23,20 @@ export default function Logo({
   href = "/",
   className = "",
   height = 28,
+  onDark = false,
 }: {
   variant?: "full" | "mark";
   href?: string | null;
   className?: string;
   height?: number;
+  onDark?: boolean;
 }) {
   if (variant === "mark") {
     const width = Math.round(height * MARK_ASPECT);
     const mark = (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src="/bimstream-mark.png"
+        src={onDark ? "/bimstream-mark-white.png" : "/bimstream-mark.png"}
         alt="BIMstream"
         height={height}
         width={width}
@@ -49,7 +58,7 @@ export default function Logo({
   const content = (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/bimstream-full.png"
+      src={onDark ? "/bimstream-full-white.png" : "/bimstream-full.png"}
       alt="BIMstream"
       height={height}
       width={width}

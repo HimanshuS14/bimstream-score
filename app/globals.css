@@ -86,6 +86,30 @@
 
   --background: var(--md-bg);
   --foreground: var(--md-on-surface);
+
+  /* ---------------------------------------------------------------------
+     Dark navy hero tokens (v3) - matches BIMstream's existing Tijori
+     product's marketing/auth surfaces: a near-black-to-navy diagonal
+     gradient background, a bright cyan accent for headline emphasis and
+     icon chips, and on-dark text/border tokens for the "glass" feature
+     cards that sit on top of it. Used only on the homepage hero and the
+     admin login page's dark panel - everything else (dashboard, team page,
+     the actual test-taking flow) stays on the light surface tokens above,
+     since dark surfaces make dense tables and long-form reading harder,
+     not easier.
+     --------------------------------------------------------------------- */
+  --dark-navy-1: #0a0e1a;
+  --dark-navy-2: #142347;
+  --dark-gradient-hero: linear-gradient(135deg, var(--dark-navy-1) 0%, var(--dark-navy-2) 100%);
+  --accent-cyan: #35e0d8;
+  --accent-cyan-2: #3457e0;
+  --dark-gradient-accent-text: linear-gradient(90deg, var(--accent-cyan) 0%, #6ee7ff 100%);
+  --dark-gradient-icon: linear-gradient(135deg, var(--accent-cyan-2) 0%, var(--accent-cyan) 100%);
+  --on-dark-primary: #ffffff;
+  --on-dark-secondary: #a6b0c3;
+  --on-dark-border: rgba(255, 255, 255, 0.1);
+  --on-dark-surface: rgba(255, 255, 255, 0.05);
+  --on-dark-surface-hover: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
@@ -435,4 +459,94 @@ a {
 }
 .fade-in-up {
   animation: fade-in-up 420ms var(--ease-out-snappy) both;
+}
+
+/* ---------------------------------------------------------------------------
+   Dark navy hero (v3) - homepage hero + admin login left panel.
+   --------------------------------------------------------------------------- */
+.hero-dark {
+  background: var(--dark-gradient-hero);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Soft glow blobs for the dark hero - brighter/cyan-tinted variant of
+   .gradient-blobs, tuned to read well against the near-black background. */
+.hero-dark-glow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-dark-glow::before,
+.hero-dark-glow::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: 0.28;
+}
+.hero-dark-glow::before {
+  width: 520px;
+  height: 520px;
+  top: -220px;
+  right: -160px;
+  background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
+}
+.hero-dark-glow::after {
+  width: 460px;
+  height: 460px;
+  bottom: -220px;
+  left: -160px;
+  background: radial-gradient(circle, var(--md-primary-2), transparent 70%);
+}
+
+/* Headline emphasis span - the "second line" cyan gradient text treatment */
+.text-gradient-cyan {
+  background: var(--dark-gradient-accent-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass feature card, used for the homepage test-picker cards when they sit
+   on the dark hero, and for the admin login page's feature bullets. */
+.glass-card {
+  background: var(--on-dark-surface);
+  border: 1px solid var(--on-dark-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(6px);
+  transition: background-color 200ms var(--ease-out-snappy), border-color 200ms var(--ease-out-snappy),
+    transform 200ms var(--ease-out-snappy);
+}
+.glass-card:hover {
+  background: var(--on-dark-surface-hover);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.glass-icon-chip {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  background: var(--dark-gradient-icon);
+  color: #ffffff;
+}
+
+/* Split-screen auth layout (admin login page): dark brand panel + white
+   functional panel, side by side on wide screens, stacked on mobile. */
+.split-auth {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+}
+@media (min-width: 900px) {
+  .split-auth {
+    grid-template-columns: 1.1fr 1fr;
+  }
 }
