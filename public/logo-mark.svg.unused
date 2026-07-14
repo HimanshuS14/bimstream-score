@@ -1,0 +1,13 @@
+<svg width="600" height="520" viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#0f0f0f" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <!-- outer hexagon perimeter -->
+    <polygon points="0,260 150,20 450,20 600,260 450,500 150,500" />
+    <!-- internal vertical chords splitting the left/right tip triangles -->
+    <line x1="150" y1="20" x2="150" y2="500" />
+    <line x1="450" y1="20" x2="450" y2="500" />
+    <!-- lines through the center creating the bowtie/X facets -->
+    <line x1="0" y1="260" x2="600" y2="260" />
+    <line x1="150" y1="20" x2="450" y2="500" />
+    <line x1="150" y1="500" x2="450" y2="20" />
+  </g>
+</svg>

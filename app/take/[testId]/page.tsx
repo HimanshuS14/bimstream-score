@@ -43,7 +43,7 @@ export default async function TakeTestLandingPage({
         <Logo variant="full" height={24} />
       </header>
       <div className="flex-1 flex items-center justify-center p-6">
-        <div className="max-w-xl w-full surface-card p-8 space-y-6">
+        <div className="max-w-xl w-full surface-card p-8 space-y-6 fade-in-up">
           <div>
             <div className="badge badge-primary mb-3">{schema.program}</div>
             <h1 className="text-2xl font-bold text-[var(--md-on-surface)]">{data.title}</h1>

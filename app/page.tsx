@@ -8,14 +8,15 @@ const PROGRAM_FULL_NAME = "Situational Competency & Organizational Readiness Eva
 
 export default function HomePage() {
   return (
-    <main className="flex-1 flex flex-col">
-      <header className="px-6 py-6 flex items-center">
+    <main className="flex-1 flex flex-col relative overflow-hidden">
+      <div className="gradient-blobs" />
+      <header className="relative z-10 px-6 py-6 flex items-center">
         <Logo variant="full" height={26} />
       </header>
 
-      <div className="flex-1 flex items-center justify-center px-6 pb-16">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-6 pb-16">
         <div className="max-w-3xl w-full space-y-10">
-          <div className="text-center space-y-3">
+          <div className="text-center space-y-3 fade-in-up">
             <div className="inline-flex items-center gap-2 badge badge-primary">
               <ShieldCheck size={14} />
               BIMstream SCORE
@@ -31,7 +32,7 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 gap-5 text-left">
             <Link
               href="/take/modeler"
-              className="group surface-card p-6 hover:elevation-2 hover:border-[var(--md-primary)] transition"
+              className="group surface-card surface-card-interactive p-6"
             >
               <div className="h-10 w-10 rounded-[var(--radius-sm)] bg-[var(--md-primary-container)] text-[var(--md-primary)] flex items-center justify-center mb-4">
                 <HardHat size={20} />
@@ -52,7 +53,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/take/leadership"
-              className="group surface-card p-6 hover:elevation-2 hover:border-[var(--md-primary)] transition"
+              className="group surface-card surface-card-interactive p-6"
             >
               <div className="h-10 w-10 rounded-[var(--radius-sm)] bg-[var(--md-primary-container)] text-[var(--md-primary)] flex items-center justify-center mb-4">
                 <Users size={20} />

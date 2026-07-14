@@ -3,7 +3,7 @@
 ## Trait dimensions
 LD (Leadership & Decision-Making), TP (Team Play), CM (Communication), PS (Problem-Solving), DR (Dispute Resolution), OM (Organizational Mindset), ET (Ethics & Integrity). Definitions in `traits.json`.
 
-Both tests are now 100% situational-judgment (no technical/analytical MCQ section — software/technical skill is covered by the separate technical test and the Personal Interview). 30 questions each, ~60 seconds/question, 30-minute timer.
+Both tests are now 100% situational-judgment (no technical/analytical MCQ section — software/technical skill is covered by the separate technical test and the Personal Interview). 30 questions each, ~90 seconds/question, 45-minute timer.
 
 ## Question topic quotas
 Each question carries a `topic` field (one of the 7 trait keys) purely for organization/reporting. Scoring itself always runs off each option's `trait_deltas` vector, never off the `topic` label — so a question tagged topic `PS` can still carry a secondary `ET` delta, and an `ethics_concern` flag can appear on a question whose primary topic isn't Ethics. This widens the net for catching integrity issues beyond the small dedicated Ethics quota.

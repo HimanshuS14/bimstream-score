@@ -6,9 +6,9 @@ Supabase, that runs two role-fit assessments for a BIM coordination studio. Both
 situational-judgment instruments** (no technical/analytical MCQ section - technical/software
 skill is assessed separately, by a dedicated technical test and the Personal Interview):
 
-- **Modeler / Senior Modeler** (`/take/modeler`) - 30 situational-judgment questions (30 minutes).
+- **Modeler / Senior Modeler** (`/take/modeler`) - 30 situational-judgment questions (45 minutes).
 - **Assistant Manager / Manager** (`/take/leadership`) - 30 situational-judgment questions
-  (30 minutes).
+  (45 minutes).
 
 Every question is scored across **7 behavioral trait dimensions**: Leadership & Decision-Making
 (LD), Team Play (TP), Communication (CM), Problem-Solving (PS), Dispute Resolution (DR),

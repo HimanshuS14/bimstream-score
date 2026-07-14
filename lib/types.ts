@@ -110,3 +110,17 @@ export interface ScoringResult {
   recommendation: RecommendationBand;
   leadershipPotentialNote?: string;
 }
+
+// Admin team management (added alongside admin_profiles table /
+// supabase/migrations/0002_admin_roles.sql). "admin" can manage other team
+// members (invite/remove) and view all candidate data; "reviewer" can view
+// all candidate data but cannot manage the team.
+export type AdminRole = "admin" | "reviewer";
+
+export interface AdminProfile {
+  id: string;
+  name: string;
+  email: string;
+  role: AdminRole;
+  created_at: string;
+}

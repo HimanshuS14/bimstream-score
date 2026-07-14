@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   BIMstream SCORE — design tokens
-   A small Material Design 3–inspired token set: a refined neutral palette,
-   one accent color (Google-blue-esque, used sparingly for primary actions,
-   links, and focus rings), layered elevation shadows, a consistent radius
-   scale, and an 8px spacing rhythm (via Tailwind's default spacing scale).
+   BIMstream SCORE — design tokens (v2, "premium SaaS" pass)
+   Builds on the original Material Design 3–inspired token set: same neutral
+   palette and structure, upgraded with a richer two-stop accent gradient (used
+   sparingly, for the primary CTA and hero decoration only - most of the UI
+   stays flat/neutral so the gradient reads as a deliberate accent rather than
+   decoration-for-its-own-sake), a snappier easing curve, hover-lift affordance
+   on interactive cards, and a couple of new primitives (stat tiles, a subtle
+   decorative gradient-blob background) used on the homepage and admin
+   dashboard. Existing component classes (.btn, .input, .badge, .option-card,
+   .surface-card, etc.) all still work exactly as before - nothing was renamed
+   or removed, only extended.
    --------------------------------------------------------------------------- */
 :root {
   /* Neutral surface palette */
@@ -20,13 +26,16 @@
   --md-on-surface-variant: #5f6368;
   --md-on-surface-muted: #80868b;
 
-  /* Accent (single accent color, used sparingly) */
-  --md-primary: #1a73e8;
-  --md-primary-hover: #1765cc;
-  --md-primary-active: #185abc;
-  --md-primary-container: #e8f0fe;
+  /* Accent - a richer indigo-blue than the original flat Google-blue, plus a
+     second stop for the gradient variant used on the primary CTA/hero only. */
+  --md-primary: #3457e0;
+  --md-primary-2: #7c5cff;
+  --md-primary-hover: #2a46c4;
+  --md-primary-active: #223aa8;
+  --md-primary-container: #eaedff;
   --md-on-primary: #ffffff;
-  --md-on-primary-container: #0b3d91;
+  --md-on-primary-container: #26339e;
+  --md-gradient-primary: linear-gradient(135deg, var(--md-primary) 0%, var(--md-primary-2) 100%);
 
   /* Semantic colors */
   --md-success: #188038;
@@ -43,6 +52,7 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+  --radius-xl: 22px;
   --radius-full: 999px;
 
   /* Elevation (layered shadows, not a flat drop-shadow) */
@@ -50,6 +60,12 @@
   --elevation-1: 0 1px 2px 0 rgba(32, 33, 36, 0.06), 0 1px 3px 1px rgba(32, 33, 36, 0.08);
   --elevation-2: 0 1px 2px 0 rgba(32, 33, 36, 0.08), 0 2px 6px 2px rgba(32, 33, 36, 0.1);
   --elevation-3: 0 4px 8px 3px rgba(32, 33, 36, 0.1), 0 1px 3px 0 rgba(32, 33, 36, 0.16);
+  /* Tinted "glow" shadow for hover-lift on interactive cards/primary buttons */
+  --elevation-primary-glow: 0 8px 24px -8px rgba(52, 87, 224, 0.45);
+
+  /* Snappier, more "premium SaaS" easing than a linear/ease-in-out default -
+     fast start, gentle settle. Used for hover-lift and entrance transitions. */
+  --ease-out-snappy: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Fonts: next/font/google (Inter) is wired up in app/layout.tsx and exposes
      --font-sans when it can reach Google Fonts at build time (e.g. on
@@ -135,6 +151,55 @@ a {
   box-shadow: var(--elevation-1);
 }
 
+/* Hover-lift variant: opt-in via an additional class on clickable/interactive
+   cards (e.g. the homepage test-picker cards). Not applied to .surface-card
+   by default since plenty of surface-cards are static content, not links. */
+.surface-card-interactive {
+  transition: transform 220ms var(--ease-out-snappy), box-shadow 220ms var(--ease-out-snappy),
+    border-color 220ms var(--ease-out-snappy);
+}
+.surface-card-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--elevation-3);
+  border-color: var(--md-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Decorative gradient-blob background - used behind hero/header sections for
+   a bit of visual richness. Absolutely positioned, pointer-events none, sits
+   behind content (parent needs position:relative + overflow:hidden or
+   isolate). Deliberately subtle (low opacity, heavily blurred).
+   --------------------------------------------------------------------------- */
+.gradient-blobs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.gradient-blobs::before,
+.gradient-blobs::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(64px);
+  opacity: 0.35;
+}
+.gradient-blobs::before {
+  width: 480px;
+  height: 480px;
+  top: -180px;
+  right: -120px;
+  background: radial-gradient(circle, var(--md-primary-2), transparent 70%);
+}
+.gradient-blobs::after {
+  width: 420px;
+  height: 420px;
+  bottom: -200px;
+  left: -140px;
+  background: radial-gradient(circle, var(--md-primary), transparent 70%);
+}
+
 /* ---------------------------------------------------------------------------
    Buttons
    --------------------------------------------------------------------------- */
@@ -147,8 +212,8 @@ a {
   font-size: 0.9375rem;
   border-radius: var(--radius-full);
   padding: 0.625rem 1.5rem;
-  transition: background-color 150ms ease, box-shadow 150ms ease, color 150ms ease,
-    border-color 150ms ease, transform 100ms ease;
+  transition: background-color 150ms ease, box-shadow 220ms var(--ease-out-snappy),
+    color 150ms ease, border-color 150ms ease, transform 150ms var(--ease-out-snappy);
   cursor: pointer;
   white-space: nowrap;
 }
@@ -161,16 +226,17 @@ a {
 }
 
 .btn-primary {
-  background: var(--md-primary);
+  background: var(--md-gradient-primary);
   color: var(--md-on-primary);
   box-shadow: var(--elevation-1);
 }
 .btn-primary:hover:not(:disabled) {
-  background: var(--md-primary-hover);
-  box-shadow: var(--elevation-2);
+  box-shadow: var(--elevation-primary-glow);
+  transform: translateY(-1px);
 }
 .btn-primary:active:not(:disabled) {
-  background: var(--md-primary-active);
+  transform: translateY(0.5px);
+  box-shadow: var(--elevation-1);
 }
 
 .btn-outline {
@@ -242,11 +308,13 @@ a {
   font-size: 0.9375rem;
   line-height: 1.45;
   cursor: pointer;
-  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+  transition: border-color 180ms var(--ease-out-snappy), background-color 180ms var(--ease-out-snappy),
+    box-shadow 180ms var(--ease-out-snappy), transform 180ms var(--ease-out-snappy);
 }
 .option-card:hover {
   border-color: var(--md-primary);
   background: var(--md-primary-container);
+  transform: translateY(-1px);
 }
 .option-card.is-selected {
   border-color: var(--md-primary);
@@ -284,8 +352,8 @@ a {
 .progress-fill {
   height: 100%;
   border-radius: var(--radius-full);
-  background: var(--md-primary);
-  transition: width 300ms ease;
+  background: var(--md-gradient-primary);
+  transition: width 400ms var(--ease-out-snappy);
 }
 
 /* ---------------------------------------------------------------------------
@@ -315,4 +383,56 @@ a {
 }
 .row-flagged:hover {
   background: #f9d6d3;
+}
+
+/* ---------------------------------------------------------------------------
+   Stat tiles — small dashboard summary cards (e.g. admin dashboard header:
+   total candidates, strong fits, flagged). Icon chip + big number + label.
+   --------------------------------------------------------------------------- */
+.stat-tile {
+  background: var(--md-surface);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--elevation-1);
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+.stat-tile-icon {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+}
+.stat-tile-value {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--md-on-surface);
+}
+.stat-tile-label {
+  font-size: 0.75rem;
+  color: var(--md-on-surface-variant);
+  margin-top: 0.125rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Simple entrance animation - used sparingly (e.g. homepage hero, dashboard
+   stat row on load) to add a touch of motion without being distracting.
+   --------------------------------------------------------------------------- */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-up {
+  animation: fade-in-up 420ms var(--ease-out-snappy) both;
 }

@@ -1,0 +1,11 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="40" fill="#ffffff" />
+  <g transform="translate(20,30.667) scale(0.26667)" fill="none" stroke="#0f0f0f" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+    <polygon points="0,260 150,20 450,20 600,260 450,500 150,500" />
+    <line x1="150" y1="20" x2="150" y2="500" />
+    <line x1="450" y1="20" x2="450" y2="500" />
+    <line x1="0" y1="260" x2="600" y2="260" />
+    <line x1="150" y1="20" x2="450" y2="500" />
+    <line x1="150" y1="500" x2="450" y2="20" />
+  </g>
+</svg>

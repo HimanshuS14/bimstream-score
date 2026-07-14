@@ -165,7 +165,7 @@ export default function TestRunner({ testId, sessionId, title, durationMinutes, 
 
   return (
     <main className="flex-1 pb-28">
-      <div className="sticky top-0 z-10 bg-[var(--md-surface)]/95 backdrop-blur border-b border-[var(--md-outline-variant)]">
+      <div className="sticky top-0 z-10 bg-[var(--md-surface)]/95 backdrop-blur border-b border-[var(--md-outline-variant)] elevation-1">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
             <Logo variant="mark" href={null} height={22} className="flex-none hidden sm:block" />
@@ -177,7 +177,7 @@ export default function TestRunner({ testId, sessionId, title, durationMinutes, 
             </div>
           </div>
           <div
-            className={`flex items-center gap-1.5 font-mono text-lg font-bold px-3 py-1.5 rounded-[var(--radius-md)] flex-none ${
+            className={`flex items-center gap-1.5 font-mono text-lg font-bold px-3.5 py-1.5 rounded-[var(--radius-full)] flex-none transition-colors duration-300 ${
               low
                 ? "bg-[var(--md-error-container)] text-[var(--md-error)]"
                 : "bg-[var(--md-surface-variant)] text-[var(--md-on-surface)]"
@@ -212,7 +212,7 @@ export default function TestRunner({ testId, sessionId, title, durationMinutes, 
                 const selected = answers[q.id];
 
                 return (
-                  <div key={q.id} className="surface-card p-5 sm:p-6">
+                  <div key={q.id} className="surface-card p-5 sm:p-6 fade-in-up">
                     <p className="font-medium mb-4 text-[var(--md-on-surface)] leading-relaxed">
                       <span className="text-[var(--md-on-surface-variant)] font-normal">
                         {sIdx + 1}.{qIdx + 1}

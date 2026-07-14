@@ -1,7 +1,8 @@
 import { notFound, redirect } from "next/navigation";
-import { AlertTriangle, CheckCircle2, Flag, XCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Flag, XCircle, FileDown } from "lucide-react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AdminShell from "@/components/AdminShell";
+import { getMyAdminProfile } from "@/lib/actions/adminTeam";
 import { TRAIT_LABELS } from "@/lib/traits";
 import { TRAIT_KEYS } from "@/lib/types";
 import type {
@@ -99,6 +100,8 @@ export default async function SessionDetailPage({
   } = await supabase.auth.getUser();
   if (!user) redirect("/admin/login");
 
+  const myProfile = await getMyAdminProfile();
+
   const { data, error } = await supabase
     .from("sessions")
     .select(
@@ -124,16 +127,23 @@ export default async function SessionDetailPage({
   const { classes: bandClasses, Icon: BandIcon } = bandVisuals(session.recommendation);
 
   return (
-    <AdminShell userEmail={user.email}>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-[var(--md-on-surface)]">
-          {session.candidates?.name ?? "Candidate"}
-        </h1>
-        <p className="text-[var(--md-on-surface-variant)] text-sm">{session.candidates?.email}</p>
-        <p className="text-[var(--md-on-surface-variant)] text-sm">
-          {session.tests?.title ?? session.test_id} · Target role:{" "}
-          {session.candidates?.target_role ?? "—"}
-        </p>
+    <AdminShell userEmail={user.email} role={myProfile?.role ?? null}>
+      <div className="mb-6 flex items-start justify-between gap-4 flex-wrap">
+        <div>
+          <h1 className="text-2xl font-bold text-[var(--md-on-surface)]">
+            {session.candidates?.name ?? "Candidate"}
+          </h1>
+          <p className="text-[var(--md-on-surface-variant)] text-sm">{session.candidates?.email}</p>
+          <p className="text-[var(--md-on-surface-variant)] text-sm">
+            {session.tests?.title ?? session.test_id} · Target role:{" "}
+            {session.candidates?.target_role ?? "—"}
+          </p>
+        </div>
+        {session.status === "submitted" && (
+          <a href={`/admin/sessions/${session.id}/report`} className="btn btn-outline flex-none">
+            <FileDown size={15} /> Download PDF report
+          </a>
+        )}
       </div>
 
       {session.status !== "submitted" && (

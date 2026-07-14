@@ -1,14 +1,17 @@
 import Link from "next/link";
-import { LogOut } from "lucide-react";
+import { LogOut, Users } from "lucide-react";
 import { signOut } from "@/lib/actions/auth";
 import Logo from "@/components/Logo";
+import type { AdminRole } from "@/lib/types";
 
 export default function AdminShell({
   children,
   userEmail,
+  role = null,
 }: {
   children: React.ReactNode;
   userEmail?: string | null;
+  role?: AdminRole | null;
 }) {
   return (
     <div className="flex-1 flex flex-col">
@@ -21,6 +24,14 @@ export default function AdminShell({
             </span>
           </Link>
           <div className="flex items-center gap-4 text-sm text-[var(--md-on-surface-variant)]">
+            {role === "admin" && (
+              <Link
+                href="/admin/team"
+                className="hidden sm:inline-flex items-center gap-1.5 font-medium text-[var(--md-on-surface)] hover:text-[var(--md-primary)] transition"
+              >
+                <Users size={15} /> Team
+              </Link>
+            )}
             {userEmail && <span className="hidden sm:inline">{userEmail}</span>}
             <form action={signOut}>
               <button type="submit" className="btn btn-outline !py-1.5 !px-3.5 text-sm">

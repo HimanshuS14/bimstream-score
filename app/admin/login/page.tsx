@@ -10,7 +10,7 @@ export default function AdminLoginPage() {
         <Logo variant="full" height={24} />
       </header>
       <div className="flex-1 flex items-center justify-center p-6">
-        <div className="max-w-sm w-full surface-card p-8 space-y-6">
+        <div className="max-w-sm w-full surface-card p-8 space-y-6 fade-in-up">
           <div>
             <h1 className="text-xl font-bold text-[var(--md-on-surface)]">Reviewer sign in</h1>
             <p className="text-sm text-[var(--md-on-surface-variant)] mt-1">

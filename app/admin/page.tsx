@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { AlertTriangle, CheckCircle2, Flag, XCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Flag, ListChecks, XCircle } from "lucide-react";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AdminShell from "@/components/AdminShell";
+import { getMyAdminProfile } from "@/lib/actions/adminTeam";
 import type { EthicsFlag, RecommendationBand } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -53,6 +54,8 @@ export default async function AdminDashboardPage() {
     redirect("/admin/login");
   }
 
+  const myProfile = await getMyAdminProfile();
+
   const { data, error } = await supabase
     .from("sessions")
     .select(
@@ -62,8 +65,12 @@ export default async function AdminDashboardPage() {
 
   const sessions = (data ?? []) as unknown as SessionRow[];
 
+  const totalSessions = sessions.length;
+  const strongFitCount = sessions.filter((s) => s.recommendation === "Strong Fit").length;
+  const flaggedCount = sessions.filter((s) => (s.flags?.length ?? 0) > 0).length;
+
   return (
-    <AdminShell userEmail={user.email}>
+    <AdminShell userEmail={user.email} role={myProfile?.role ?? null}>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-[var(--md-on-surface)]">Candidate sessions</h1>
@@ -74,6 +81,45 @@ export default async function AdminDashboardPage() {
         <p className="text-sm text-[var(--md-on-surface-variant)] flex-none">
           {sessions.length} total
         </p>
+      </div>
+
+      <div className="grid sm:grid-cols-3 gap-4 mb-6 fade-in-up">
+        <div className="stat-tile">
+          <div
+            className="stat-tile-icon"
+            style={{ background: "var(--md-primary-container)", color: "var(--md-primary)" }}
+          >
+            <ListChecks size={20} />
+          </div>
+          <div>
+            <div className="stat-tile-value">{totalSessions}</div>
+            <div className="stat-tile-label">Total sessions</div>
+          </div>
+        </div>
+        <div className="stat-tile">
+          <div
+            className="stat-tile-icon"
+            style={{ background: "var(--md-success-container)", color: "var(--md-success)" }}
+          >
+            <CheckCircle2 size={20} />
+          </div>
+          <div>
+            <div className="stat-tile-value">{strongFitCount}</div>
+            <div className="stat-tile-label">Strong Fit</div>
+          </div>
+        </div>
+        <div className="stat-tile">
+          <div
+            className="stat-tile-icon"
+            style={{ background: "var(--md-error-container)", color: "var(--md-error)" }}
+          >
+            <Flag size={20} />
+          </div>
+          <div>
+            <div className="stat-tile-value">{flaggedCount}</div>
+            <div className="stat-tile-label">Flagged</div>
+          </div>
+        </div>
       </div>
 
       {error && (
